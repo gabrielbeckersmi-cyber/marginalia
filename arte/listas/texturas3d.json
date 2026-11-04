@@ -1,0 +1,50 @@
+[
+ {
+  "nome": "tex_casca",
+  "prompt": "seamless tileable flat texture swatch, orthographic straight-on view with no perspective, uniform detail across the whole square, fills the entire frame edge to edge, no border, no frame, no single large object, no text. tree bark texture: rough vertical furrows and ridges of warm brown bark drawn with scratchy dark sepia ink hatching and ochre, umber and burnt sienna gouache washes, a few lichen flecks",
+  "transparente": false,
+  "tamanho": 1024,
+  "proporcao": "1:1",
+  "motor": "grok"
+ },
+ {
+  "nome": "tex_casca_vidoeiro",
+  "prompt": "seamless tileable flat texture swatch, orthographic straight-on view with no perspective, uniform detail across the whole square, fills the entire frame edge to edge, no border, no frame, no single large object, no text. birch tree bark texture: pale cream and bone-white bark with horizontal dark charcoal ink dashes and cracks, drawn with scratchy ink hatching and soft grey-beige gouache washes",
+  "transparente": false,
+  "tamanho": 1024,
+  "proporcao": "1:1",
+  "motor": "grok"
+ },
+ {
+  "nome": "tex_folhagem",
+  "prompt": "seamless tileable flat texture swatch, orthographic straight-on view with no perspective, uniform detail across the whole square, fills the entire frame edge to edge, no border, no frame, no single large object, no text. dense tree foliage texture: overlapping small oak leaves in olive green, muted moss green and dark green gouache with tiny ochre highlights and dark ink outlines around leaf clusters, hand-inked",
+  "transparente": false,
+  "tamanho": 1024,
+  "proporcao": "1:1",
+  "motor": "grok"
+ },
+ {
+  "nome": "tex_folhagem_outono",
+  "prompt": "seamless tileable flat texture swatch, orthographic straight-on view with no perspective, uniform detail across the whole square, fills the entire frame edge to edge, no border, no frame, no single large object, no text. dense autumn tree foliage texture: overlapping small leaves in madder red, burnt orange, ochre yellow and olive with dark ink outlines around leaf clusters, hand-inked gouache",
+  "transparente": false,
+  "tamanho": 1024,
+  "proporcao": "1:1",
+  "motor": "grok"
+ },
+ {
+  "nome": "tex_pinheiro",
+  "prompt": "seamless tileable flat texture swatch, orthographic straight-on view with no perspective, uniform detail across the whole square, fills the entire frame edge to edge, no border, no frame, no single large object, no text. dense conifer pine needle foliage texture: layered drooping fir branches in deep blue-green and dark olive gouache with dark ink strokes and tiny ochre highlights, hand-inked",
+  "transparente": false,
+  "tamanho": 1024,
+  "proporcao": "1:1",
+  "motor": "grok"
+ },
+ {
+  "nome": "tex_pedra",
+  "prompt": "seamless tileable flat texture swatch, orthographic straight-on view with no perspective, uniform detail across the whole square, fills the entire frame edge to edge, no border, no frame, no single large object, no text. rough stone rock texture: grey and warm taupe stone surface with cracks, chips and patches of olive moss, drawn with scratchy dark ink cross-hatching and flat gouache washes",
+  "transparente": false,
+  "tamanho": 1024,
+  "proporcao": "1:1",
+  "motor": "grok"
+ }
+]

@@ -11,6 +11,7 @@ import { CONSTR } from "../jogo/dados/construcoes.js";
 import { ANIMAIS } from "../jogo/dados/animais.js";
 import { T, featEm, setFeat } from "../jogo/mundo.js";
 import { hash2, fbm } from "../jogo/rng.js";
+import { criarArvores3D } from "./arvores3d.js";
 
 const TS = C.TILE, CHK = 32, RAIO_CHUNKS = 4, NIVEL_AGUA = -0.2;
 // ── ajustes de câmera e escala (estimados a partir dos prints do Gabriel) ──
@@ -134,7 +135,7 @@ function espacarArvores(J) {
 // ── partida ──
 async function iniciar() {
   await carregarArte();
-  const J = novoJogo((Date.now() % 100000) + 1, { sprite: new URLSearchParams(location.search).get("p") || "pessoa_2", nome: "Viajante" });
+  const J = novoJogo(+new URLSearchParams(location.search).get("semente") || (Date.now() % 100000) + 1, { sprite: new URLSearchParams(location.search).get("p") || "pessoa_2", nome: "Viajante" });
   const p = J.jogador, M = J.M;
   espacarArvores(J);
   J.chegando = false; p.x = (M.porto.tx + 0.5) * TS; p.y = (M.porto.ty - 2.5) * TS; p.dir = 3; p.stam = 100;
@@ -150,6 +151,8 @@ async function iniciar() {
   const agua = new THREE.Mesh(new THREE.PlaneGeometry(420, 420), new THREE.MeshLambertMaterial({ color: "#4a95ab", transparent: true, opacity: 0.74, depthWrite: false }));
   agua.rotation.x = -Math.PI / 2; agua.renderOrder = 1; cena.add(agua);
 
+  // árvores em 3D (modelos do Quaternius + textura IA). ?arvores=sprite volta para os sprites 2D
+  const arv3d = new URLSearchParams(location.search).get("arvores") === "sprite" ? null : await criarArvores3D(cena).catch((e) => { console.warn("árvores 3D indisponíveis", e); return null; });
   // grupos de sprites
   const grupos = new Map(), grupoDe = (chave, max = 3000) => { let g = grupos.get(chave); if (!g) { g = new Grupo(chave, max, cena); grupos.set(chave, g); } return g; };
   for (const c of ["plantas", "recursos", "extras"]) grupoDe(c, 14000);
@@ -212,13 +215,14 @@ async function iniciar() {
   const FACE = [[0, 1], [-1, 0], [1, 0], [0, -1]];
   let tFeat = 0, tUI = 0;
   function reconstruir() {
-    nS = 0; for (const g of grupos.values()) g.limpar();
+    nS = 0; for (const g of grupos.values()) g.limpar(); if (arv3d && arv3d.ok) arv3d.limpar();
     const px = sx(p.x), pz = sx(p.y), tem = (c) => grupoDe(c);
     // elementos do mapa
     const R = 46, x0 = Math.max(0, Math.floor(px - R)), x1 = Math.min(M.N - 1, Math.ceil(px + R)), y0 = Math.max(0, Math.floor(pz - R)), y1 = Math.min(M.N - 1, Math.ceil(pz + R));
     for (let ty = y0; ty <= y1; ty++) for (let tx = x0; tx <= x1; tx++) {
       const f = M.feat[ty * M.N + tx]; if (!f) continue; const d = FEAT[f]; if (!d) continue;
       const alta = d.grupos.includes("madeira") || f === 4, w = sx(d.tam) * (alta ? ESCALA_ARVORE : 1.1), x = tx + 0.5 + (hash2(tx, ty, 5) - 0.5) * 0.17, z = ty + 0.9, y = mundo.alturaEm(x, z);
+      if (arv3d && arv3d.ok && arv3d.tem(f)) { const e = arv3d.adicionar(f, x, y, z, hash2(tx, ty, 21), hash2(tx, ty, 22), hash2(tx, ty, 23), f === 24 ? 1.35 : 1); sombra(x, y, z, e * 70); continue; }
       tem(d.f[0]).add(x, y - 0.05, z, w, w, d.f[1]); if (d.bloq) sombra(x, y, z, w * 0.22);
     }
     // construções
@@ -243,7 +247,7 @@ async function iniciar() {
     rotulos.length = 0;
     for (const e of J.npcs) pessoa(e, null); pessoa(p, S.movimento);
     for (const s of J.navios) { const x = sx(s.x), z = sx(s.y + 120), w = 9.2; tem("navio").add(x, NIVEL_AGUA - 0.35, z, w, w, 0); }
-    for (const g of grupos.values()) g.fim(); sombras.count = nS; sombras.instanceMatrix.needsUpdate = true;
+    for (const g of grupos.values()) g.fim(); if (arv3d && arv3d.ok) arv3d.fim(); sombras.count = nS; sombras.instanceMatrix.needsUpdate = true;
   }
   const rotulos = [], rotEl = document.getElementById("rotulos"), nomesEl = new Map();
 
@@ -287,7 +291,7 @@ async function iniciar() {
     for (const [nome, el] of nomesEl) if (!usados.has(nome)) el.style.display = "none";
     requestAnimationFrame(quadro);
   }
-  window.__proto = { J, S, orb, cam, mundo, renderer, passo, quadro: () => 0 };
+  window.__proto = { arv3d, J, S, orb, cam, mundo, renderer, passo, quadro: () => 0 };
   document.getElementById("carregando").remove();
   requestAnimationFrame(quadro);
 }
