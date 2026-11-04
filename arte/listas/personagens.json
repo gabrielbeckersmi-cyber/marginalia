@@ -1,0 +1,86 @@
+[
+ {
+  "nome": "folha_pessoa_1",
+  "prompt": "character sprite sheet of a young man with short black hair and tan skin wearing a blue linen tunic and brown trousers, drawn from a high top-down three-quarter camera angle, small chibi body with big head. Exactly 4 columns by 4 rows grid of equal square cells on one image, no overlaps, same size character in every cell, generous spacing between cells. Row 1: walking facing down toward camera, 4 walk-cycle frames. Row 2: walking facing left, 4 frames. Row 3: walking facing right, 4 frames. Row 4: walking facing up away from camera showing the back, 4 frames",
+  "transparente": true,
+  "tamanho": 1024,
+  "motor": "gpt-medium"
+ },
+ {
+  "nome": "folha_pessoa_2",
+  "prompt": "character sprite sheet of a young woman with a long auburn braid and fair skin wearing a red wool dress with a white apron, drawn from a high top-down three-quarter camera angle, small chibi body with big head. Exactly 4 columns by 4 rows grid of equal square cells on one image, no overlaps, same size character in every cell, generous spacing between cells. Row 1: walking facing down toward camera, 4 walk-cycle frames. Row 2: walking facing left, 4 frames. Row 3: walking facing right, 4 frames. Row 4: walking facing up away from camera showing the back, 4 frames",
+  "transparente": true,
+  "tamanho": 1024,
+  "motor": "gpt-medium"
+ },
+ {
+  "nome": "folha_pessoa_3",
+  "prompt": "character sprite sheet of a stocky man with a bushy red beard and pale freckled skin wearing an ochre yellow tunic and leather vest, drawn from a high top-down three-quarter camera angle, small chibi body with big head. Exactly 4 columns by 4 rows grid of equal square cells on one image, no overlaps, same size character in every cell, generous spacing between cells. Row 1: walking facing down toward camera, 4 walk-cycle frames. Row 2: walking facing left, 4 frames. Row 3: walking facing right, 4 frames. Row 4: walking facing up away from camera showing the back, 4 frames",
+  "transparente": true,
+  "tamanho": 1024,
+  "motor": "gpt-medium"
+ },
+ {
+  "nome": "folha_pessoa_4",
+  "prompt": "character sprite sheet of a woman with dark curly hair and deep brown skin wearing a lapis blue dress and cream headscarf, drawn from a high top-down three-quarter camera angle, small chibi body with big head. Exactly 4 columns by 4 rows grid of equal square cells on one image, no overlaps, same size character in every cell, generous spacing between cells. Row 1: walking facing down toward camera, 4 walk-cycle frames. Row 2: walking facing left, 4 frames. Row 3: walking facing right, 4 frames. Row 4: walking facing up away from camera showing the back, 4 frames",
+  "transparente": true,
+  "tamanho": 1024,
+  "motor": "gpt-medium"
+ },
+ {
+  "nome": "folha_pessoa_5",
+  "prompt": "character sprite sheet of a thin man with bald head and grey mustache and olive skin wearing a grey hooded cloak over green tunic, drawn from a high top-down three-quarter camera angle, small chibi body with big head. Exactly 4 columns by 4 rows grid of equal square cells on one image, no overlaps, same size character in every cell, generous spacing between cells. Row 1: walking facing down toward camera, 4 walk-cycle frames. Row 2: walking facing left, 4 frames. Row 3: walking facing right, 4 frames. Row 4: walking facing up away from camera showing the back, 4 frames",
+  "transparente": true,
+  "tamanho": 1024,
+  "motor": "gpt-medium"
+ },
+ {
+  "nome": "folha_pessoa_6",
+  "prompt": "character sprite sheet of a girl-like young woman with short blonde hair and light skin wearing a cream shirt, brown skirt and red scarf, drawn from a high top-down three-quarter camera angle, small chibi body with big head. Exactly 4 columns by 4 rows grid of equal square cells on one image, no overlaps, same size character in every cell, generous spacing between cells. Row 1: walking facing down toward camera, 4 walk-cycle frames. Row 2: walking facing left, 4 frames. Row 3: walking facing right, 4 frames. Row 4: walking facing up away from camera showing the back, 4 frames",
+  "transparente": true,
+  "tamanho": 1024,
+  "motor": "gpt-medium"
+ },
+ {
+  "nome": "folha_pessoa_7",
+  "prompt": "character sprite sheet of a tall man with long brown hair tied back and brown skin wearing a purple tunic with a leather belt, drawn from a high top-down three-quarter camera angle, small chibi body with big head. Exactly 4 columns by 4 rows grid of equal square cells on one image, no overlaps, same size character in every cell, generous spacing between cells. Row 1: walking facing down toward camera, 4 walk-cycle frames. Row 2: walking facing left, 4 frames. Row 3: walking facing right, 4 frames. Row 4: walking facing up away from camera showing the back, 4 frames",
+  "transparente": true,
+  "tamanho": 1024,
+  "motor": "gpt-medium"
+ },
+ {
+  "nome": "folha_pessoa_8",
+  "prompt": "character sprite sheet of an older woman with white hair in a bun and pale wrinkled skin wearing a dark green dress and shawl, drawn from a high top-down three-quarter camera angle, small chibi body with big head. Exactly 4 columns by 4 rows grid of equal square cells on one image, no overlaps, same size character in every cell, generous spacing between cells. Row 1: walking facing down toward camera, 4 walk-cycle frames. Row 2: walking facing left, 4 frames. Row 3: walking facing right, 4 frames. Row 4: walking facing up away from camera showing the back, 4 frames",
+  "transparente": true,
+  "tamanho": 1024,
+  "motor": "gpt-medium"
+ },
+ {
+  "nome": "folha_pessoa_9",
+  "prompt": "character sprite sheet of a broad man with a black beard and a straw hat and sun tanned skin wearing a white shirt and brown overalls, drawn from a high top-down three-quarter camera angle, small chibi body with big head. Exactly 4 columns by 4 rows grid of equal square cells on one image, no overlaps, same size character in every cell, generous spacing between cells. Row 1: walking facing down toward camera, 4 walk-cycle frames. Row 2: walking facing left, 4 frames. Row 3: walking facing right, 4 frames. Row 4: walking facing up away from camera showing the back, 4 frames",
+  "transparente": true,
+  "tamanho": 1024,
+  "motor": "gpt-medium"
+ },
+ {
+  "nome": "folha_pessoa_10",
+  "prompt": "character sprite sheet of a woman with a shaved side and dark straight hair and olive skin wearing a mustard cloak and leather boots, drawn from a high top-down three-quarter camera angle, small chibi body with big head. Exactly 4 columns by 4 rows grid of equal square cells on one image, no overlaps, same size character in every cell, generous spacing between cells. Row 1: walking facing down toward camera, 4 walk-cycle frames. Row 2: walking facing left, 4 frames. Row 3: walking facing right, 4 frames. Row 4: walking facing up away from camera showing the back, 4 frames",
+  "transparente": true,
+  "tamanho": 1024,
+  "motor": "gpt-medium"
+ },
+ {
+  "nome": "folha_bandido_1",
+  "prompt": "character sprite sheet of a menacing bandit wearing a ragged dark red hood and cloth mask over the face, dagger on belt, patched black clothes, drawn from a high top-down three-quarter camera angle, small chibi body with big head. Exactly 4 columns by 4 rows grid of equal square cells on one image, no overlaps, same size character in every cell, generous spacing between cells. Row 1: walking facing down toward camera, 4 walk-cycle frames. Row 2: walking facing left, 4 frames. Row 3: walking facing right, 4 frames. Row 4: walking facing up away from camera showing the back, 4 frames",
+  "transparente": true,
+  "tamanho": 1024,
+  "motor": "gpt-medium"
+ },
+ {
+  "nome": "folha_bandido_2",
+  "prompt": "character sprite sheet of a scruffy bandit with an eye patch and a torn black hat and a scar, wearing a brown leather jerkin and holding a club, drawn from a high top-down three-quarter camera angle, small chibi body with big head. Exactly 4 columns by 4 rows grid of equal square cells on one image, no overlaps, same size character in every cell, generous spacing between cells. Row 1: walking facing down toward camera, 4 walk-cycle frames. Row 2: walking facing left, 4 frames. Row 3: walking facing right, 4 frames. Row 4: walking facing up away from camera showing the back, 4 frames",
+  "transparente": true,
+  "tamanho": 1024,
+  "motor": "gpt-medium"
+ }
+]

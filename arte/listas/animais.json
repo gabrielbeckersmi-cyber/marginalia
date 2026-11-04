@@ -1,0 +1,37 @@
+[
+ {
+  "nome": "folha_cervo",
+  "prompt": "animal sprite sheet of a graceful deer with small antlers, drawn from a high top-down three-quarter camera angle, whimsical oversized head. Exactly 4 columns by 2 rows grid of equal cells on one image, no overlaps, same size animal in every cell, generous spacing. Row 1: 4-frame walk cycle facing right (side view of body, slight top-down tilt). Row 2: 4 frames of standing, grazing head down, head up alert, kicked-back leap, and lying down",
+  "transparente": true,
+  "tamanho": 1024,
+  "motor": "gpt-medium"
+ },
+ {
+  "nome": "folha_coelho",
+  "prompt": "animal sprite sheet of a fluffy rabbit with long ears, drawn from a high top-down three-quarter camera angle, whimsical oversized head. Exactly 4 columns by 2 rows grid of equal cells on one image, no overlaps, same size animal in every cell, generous spacing. Row 1: 4-frame walk cycle facing right (side view of body, slight top-down tilt). Row 2: 4 frames of hopping, sitting, sitting alert with ears up, and scampering fast",
+  "transparente": true,
+  "tamanho": 1024,
+  "motor": "gpt-medium"
+ },
+ {
+  "nome": "folha_javali",
+  "prompt": "animal sprite sheet of a stocky wild boar with tusks, drawn from a high top-down three-quarter camera angle, whimsical oversized head. Exactly 4 columns by 2 rows grid of equal cells on one image, no overlaps, same size animal in every cell, generous spacing. Row 1: 4-frame walk cycle facing right (side view of body, slight top-down tilt). Row 2: 4 frames of charging forward fast, tusks lowered attack, snorting, and hurt flinch",
+  "transparente": true,
+  "tamanho": 1024,
+  "motor": "gpt-medium"
+ },
+ {
+  "nome": "folha_lobo",
+  "prompt": "animal sprite sheet of a lean grey wolf with narrow eyes, drawn from a high top-down three-quarter camera angle, whimsical oversized head. Exactly 4 columns by 2 rows grid of equal cells on one image, no overlaps, same size animal in every cell, generous spacing. Row 1: 4-frame walk cycle facing right (side view of body, slight top-down tilt). Row 2: 4 frames of running fast, snarling attack lunge, howling, and hurt flinch",
+  "transparente": true,
+  "tamanho": 1024,
+  "motor": "gpt-medium"
+ },
+ {
+  "nome": "folha_urso",
+  "prompt": "animal sprite sheet of a huge brown bear, drawn from a high top-down three-quarter camera angle, whimsical oversized head. Exactly 4 columns by 2 rows grid of equal cells on one image, no overlaps, same size animal in every cell, generous spacing. Row 1: 4-frame walk cycle facing right (side view of body, slight top-down tilt). Row 2: 4 frames of standing on hind legs roaring, swiping claw attack, sniffing ground, and hurt flinch",
+  "transparente": true,
+  "tamanho": 1024,
+  "motor": "gpt-medium"
+ }
+]

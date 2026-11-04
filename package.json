@@ -1,0 +1,37 @@
+{
+  "name": "marginalia",
+  "productName": "Marginália",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Marginália",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "verificar": "node scripts/verificar-config.js",
+    "verificar:producao": "node scripts/verificar-config.js --producao",
+    "verificar:loja": "node scripts/verificar-loja.js",
+    "listar-conquistas": "node scripts/listar-conquistas.js",
+    "build": "node scripts/gerar-assets-md.js && node build.mjs",
+    "dev": "node build.mjs --servir",
+    "start": "npm run build && electron .",
+    "start:sem-steam": "npm run build && node scripts/iniciar-sem-steam.js",
+    "build:steam": "node scripts/build-steam.js",
+    "build:steam:teste": "node scripts/build-steam.js --teste",
+    "vdf": "node scripts/gerar-vdf.js",
+    "enviar": "node scripts/enviar-steam.js",
+    "enviar:simular": "node scripts/enviar-steam.js --simular",
+    "teste": "node --test test/unidade.test.cjs test/jogo.test.mjs test/novidades.test.mjs",
+    "teste:e2e": "node test/e2e.cjs"
+  },
+  "dependencies": {
+    "steamworks.js": "^0.4.0"
+  },
+  "devDependencies": {
+    "@electron/packager": "^20.3.0",
+    "electron": "^45.2.1",
+    "esbuild": "^0.28.2",
+    "playwright-core": "^1.64.1"
+  },
+  "engines": {
+    "node": ">=22.12"
+  }
+}

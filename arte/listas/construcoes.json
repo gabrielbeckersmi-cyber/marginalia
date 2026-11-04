@@ -1,0 +1,34 @@
+[
+ {
+  "nome": "folha_constr_1",
+  "prompt": "a game buildings sprite sheet, isolated buildings seen from a high top-down three-quarter camera angle with visible roof and front wall. Exactly 2 columns by 2 rows grid of equal cells, one building per cell, no overlaps, generous spacing, in this order row by row left to right: 1 small thatched straw hut cabin with wooden door, 2 sturdy timber house with red tiled roof and chimney, 3 round stone well with wooden roof and bucket, 4 canvas camp tent with a small banner",
+  "transparente": true,
+  "tamanho": 2048,
+  "resolucao": "2K",
+  "motor": "gpt-medium"
+ },
+ {
+  "nome": "folha_constr_2",
+  "prompt": "a game buildings sprite sheet, isolated buildings seen from a high top-down three-quarter camera angle with visible roof and front wall. Exactly 2 columns by 2 rows grid of equal cells, one building per cell, no overlaps, generous spacing, in this order row by row left to right: 1 blacksmith forge with anvil, chimney with smoke and glowing furnace, 2 sawmill workshop with big saw blade and log piles, 3 bakery kitchen with brick oven and bread shelf, 4 market stall building with striped red and cream awning and crates of goods",
+  "transparente": true,
+  "tamanho": 2048,
+  "resolucao": "2K",
+  "motor": "gpt-medium"
+ },
+ {
+  "nome": "folha_constr_3",
+  "prompt": "a game buildings sprite sheet, isolated buildings seen from a high top-down three-quarter camera angle with visible roof and front wall. Exactly 2 columns by 2 rows grid of equal cells, one building per cell, no overlaps, generous spacing, in this order row by row left to right: 1 big wooden storage barn warehouse, 2 farm field with fenced plots of crops and small scarecrow, 3 mine entrance in a rocky hill with wooden supports and a cart, 4 wooden harbor dock pier with ropes and a lantern",
+  "transparente": true,
+  "tamanho": 2048,
+  "resolucao": "2K",
+  "motor": "gpt-medium"
+ },
+ {
+  "nome": "navio",
+  "prompt": "a medieval wooden sailing ship with cream sails and a red cross banner, seen from a high top-down three-quarter camera angle, hull pointing to the right, whole ship visible",
+  "transparente": true,
+  "tamanho": 1024,
+  "motor": "gpt-medium",
+  "proporcao": "16:9"
+ }
+]

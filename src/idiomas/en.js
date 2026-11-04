@@ -1,0 +1,21 @@
+// English. Keep the SAME keys as pt.js.
+export default {
+  jogar: "Play", conquistas: "Achievements", opcoes: "Options", sair: "Quit",
+  continuar: "Resume", menu_principal: "Main menu", reiniciar: "Restart", voltar: "Back",
+  pausado: "PAUSED",
+  onda: "Wave {n}", onda_concluida: "Wave {n} cleared!", pontos: "Score", combo: "Combo x{n}", recorde: "Best: {n}",
+  vidas: "Lives",
+  fim_titulo: "GAME OVER", fim_pontos: "Score: {n}", fim_onda: "You reached wave {n}", fim_abates: "Enemies destroyed: {n}",
+  novo_recorde: "NEW HIGH SCORE!",
+  opcoes_som: "Sound", opcoes_tela_cheia: "Fullscreen", opcoes_idioma: "Language",
+  ligado: "On", desligado: "Off",
+  idioma_pt: "Português", idioma_en: "English",
+  conquista_desbloqueada: "Achievement unlocked!",
+  conquista_oculta: "Secret achievement", conquista_oculta_desc: "Keep playing to find out.",
+  conquistas_progresso: "{a} of {b} unlocked",
+  dica_mover: "Move", dica_mirar: "Aim (auto-aim without mouse/right stick)", dica_pausar: "Pause",
+  dica_menu: "Navigate: arrows / d-pad · Confirm: {confirmar} · Back: {voltar}",
+  steam_conectada: "Steam: connected ({nome})", steam_desligada: "Steam: not connected (progress saved locally)",
+  steam_teste: "Steam: simulation mode",
+  versao: "Version {v}", modo_teste: "TEST MODE",
+};

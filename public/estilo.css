@@ -1,0 +1,4 @@
+html, body { margin: 0; height: 100%; background: #000; overflow: hidden; }
+body { display: flex; align-items: center; justify-content: center; }
+canvas { display: block; background: #05060f; outline: none; cursor: default; image-rendering: auto; }
+canvas.sem-cursor { cursor: none; }

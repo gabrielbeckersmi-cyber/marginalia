@@ -1,0 +1,21 @@
+// Português (Brasil). Mantenha as MESMAS chaves em en.js.
+export default {
+  jogar: "Jogar", conquistas: "Conquistas", opcoes: "Opções", sair: "Sair",
+  continuar: "Continuar", menu_principal: "Menu principal", reiniciar: "Reiniciar", voltar: "Voltar",
+  pausado: "PAUSADO",
+  onda: "Onda {n}", onda_concluida: "Onda {n} concluída!", pontos: "Pontos", combo: "Combo x{n}", recorde: "Recorde: {n}",
+  vidas: "Vidas",
+  fim_titulo: "FIM DE JOGO", fim_pontos: "Pontos: {n}", fim_onda: "Você chegou à onda {n}", fim_abates: "Inimigos destruídos: {n}",
+  novo_recorde: "NOVO RECORDE!",
+  opcoes_som: "Som", opcoes_tela_cheia: "Tela cheia", opcoes_idioma: "Idioma",
+  ligado: "Ligado", desligado: "Desligado",
+  idioma_pt: "Português", idioma_en: "English",
+  conquista_desbloqueada: "Conquista desbloqueada!",
+  conquista_oculta: "Conquista secreta", conquista_oculta_desc: "Continue jogando para descobrir.",
+  conquistas_progresso: "{a} de {b} desbloqueadas",
+  dica_mover: "Mover", dica_mirar: "Mirar (auto-mira sem mouse/direita)", dica_pausar: "Pausar",
+  dica_menu: "Navegar: setas / direcional · Confirmar: {confirmar} · Voltar: {voltar}",
+  steam_conectada: "Steam: conectada ({nome})", steam_desligada: "Steam: não conectada (progresso salvo localmente)",
+  steam_teste: "Steam: modo de simulação",
+  versao: "Versão {v}", modo_teste: "MODO DE TESTE",
+};

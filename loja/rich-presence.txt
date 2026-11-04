@@ -1,0 +1,19 @@
+"lang"
+{
+	"english"
+	{
+		"tokens"
+		{
+			"#Menu"		"In the menus"
+			"#NaOnda"	"Fighting - wave %onda%"
+		}
+	}
+	"brazilian"
+	{
+		"tokens"
+		{
+			"#Menu"		"Nos menus"
+			"#NaOnda"	"Lutando - onda %onda%"
+		}
+	}
+}

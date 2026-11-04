@@ -1,0 +1,11 @@
+[
+ {
+  "nome": "capa_titulo",
+  "prompt": "wide illuminated manuscript map illustration of a lush island coast with a small sailing ship approaching, forest, a river, tiny huts, sea monsters drawn in the margins, empty parchment area on the top for a title",
+  "transparente": false,
+  "tamanho": 1600,
+  "proporcao": "16:9",
+  "motor": "gpt-medium",
+  "resolucao": "2K"
+ }
+]

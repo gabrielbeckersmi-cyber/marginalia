@@ -1,0 +1,37 @@
+[
+ {
+  "nome": "folha_plantas",
+  "prompt": "a props sprite sheet of separate isolated game objects seen from a high top-down three-quarter camera angle. Exactly 4 columns by 4 rows grid of equal square cells, one object centered per cell, no overlaps, generous spacing, objects in this order row by row left to right: 1 large oak tree, 2 tall dark pine tree, 3 bare dead tree, 4 apple tree with red apples, 5 berry bush with blue berries, 6 plain round green bush, 7 cluster of red-capped mushrooms, 8 wild herb plant with purple flowers, 9 reeds and cattails, 10 tree stump with axe marks, 11 fallen log, 12 tuft of tall grass, 13 patch of wildflowers, 14 fern, 15 patch of golden wheat, 16 cabbage patch",
+  "transparente": true,
+  "tamanho": 1024,
+  "motor": "gpt-medium"
+ },
+ {
+  "nome": "folha_recursos",
+  "prompt": "a props sprite sheet of separate isolated game objects seen from a high top-down three-quarter camera angle. Exactly 4 columns by 4 rows grid of equal square cells, one object centered per cell, no overlaps, generous spacing, objects in this order row by row left to right: 1 big grey boulder, 2 rock with rusty orange iron ore veins, 3 rock with black coal chunks, 4 pile of pale clay, 5 small pile of pebbles, 6 animal bone pile, 7 campfire with stones and logs, 8 wooden crate, 9 wooden barrel, 10 burlap sack of grain, 11 hay bale, 12 wooden signpost, 13 wooden fishing spot dock plank, 14 small tombstone cross, 15 beehive on stand, 16 pile of cut firewood logs",
+  "transparente": true,
+  "tamanho": 1024,
+  "motor": "gpt-medium"
+ },
+ {
+  "nome": "folha_itens_1",
+  "prompt": "a props sprite sheet of separate isolated game objects seen from a high top-down three-quarter camera angle. Exactly 4 columns by 4 rows grid of equal square cells, one object centered per cell, no overlaps, generous spacing, objects in this order row by row left to right: 1 bundle of chopped wood logs, 2 grey stone chunk, 3 iron ore lump, 4 iron ingot bar, 5 lump of coal, 6 bundle of straw fibers, 7 clay ball, 8 wooden planks stack, 9 handful of blue berries, 10 red apple, 11 red mushroom, 12 raw fish, 13 raw meat leg, 14 roasted meat leg, 15 loaf of bread, 16 bowl of stew",
+  "transparente": true,
+  "tamanho": 1024,
+  "motor": "gpt-medium"
+ },
+ {
+  "nome": "folha_itens_2",
+  "prompt": "a props sprite sheet of separate isolated game objects seen from a high top-down three-quarter camera angle. Exactly 4 columns by 4 rows grid of equal square cells, one object centered per cell, no overlaps, generous spacing, objects in this order row by row left to right: 1 full leather water flask, 2 empty leather water flask, 3 iron sword, 4 iron axe, 5 iron pickaxe, 6 wooden bow with arrow, 7 round wooden shield, 8 animal pelt, 9 gold coin, 10 wheat seeds pouch, 11 sack of flour, 12 iron hammer, 13 fishing rod, 14 wooden bucket, 15 leather backpack, 16 rolled treasure map",
+  "transparente": true,
+  "tamanho": 1024,
+  "motor": "gpt-medium"
+ },
+ {
+  "nome": "folha_icones_ui",
+  "prompt": "a props sprite sheet of separate isolated game objects seen from a high top-down three-quarter camera angle. Exactly 4 columns by 4 rows grid of equal square cells, one object centered per cell, no overlaps, generous spacing, objects in this order row by row left to right: 1 bread loaf hunger icon, 2 water drop thirst icon, 3 crescent moon tiredness icon, 4 red heart health icon, 5 stack of gold coins, 6 hammer and saw build icon, 7 open book skills icon, 8 speech bubble talk icon, 9 shield defense icon, 10 sun icon, 11 anchor ship icon, 12 house icon, 13 pickaxe work icon, 14 scales trade icon, 15 axe icon, 16 scroll job notice icon",
+  "transparente": true,
+  "tamanho": 1024,
+  "motor": "gpt-medium"
+ }
+]
