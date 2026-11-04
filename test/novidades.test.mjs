@@ -161,3 +161,24 @@ test("mapa: marcador de destino é salvo e restaurado", async () => {
   const J = novoJogo(7, {}); J.marcador = { tx: 900, ty: 800 };
   assert.deepEqual(restaurar(JSON.parse(JSON.stringify(serializar(J)))).marcador, { tx: 900, ty: 800 });
 });
+
+// ── animações ──
+import { quadroPessoa } from "../src/jogo/visual/animacao.js";
+import { ANIMACOES } from "../src/jogo/dados/animacoes.js";
+test("animação: andar/correr usam a folha base e sem arte extra cai no andar", () => {
+  const e = { sprite: "pessoa_1", mov: true, correndo: false, anim: 5.2 };
+  assert.deepEqual(quadroPessoa(e, 2, 0), { chave: "pessoa_1", idx: 2 * 4 + 1 });
+  e.correndo = true; assert.deepEqual(quadroPessoa(e, 1, 0), { chave: "pessoa_1", idx: 5 * 4 + 1 });
+  const t = { sprite: "pessoa_1", trab: true, trabHab: "lenhador", anim: 0 };   // 'cortar' sem arte: fallback
+  assert.equal(quadroPessoa(t, 0, 0).chave, "pessoa_1");
+});
+test("animação: folha de 24 quadros calcula direção e quadro (com arte habilitada)", () => {
+  ANIMACOES.cortar.sprites.push("pessoa_1");
+  try {
+    const e = { sprite: "pessoa_1", trab: true, trabHab: "lenhador" };
+    quadroPessoa(e, 0, 100);
+    assert.deepEqual(quadroPessoa(e, 0, 100.5), { chave: "pessoa_1__cortar", idx: 12 });      // 0,5 s × 24 fps
+    assert.deepEqual(quadroPessoa(e, 2, 101.1), { chave: "pessoa_1__cortar", idx: 2 * 4 * 6 + 2 });  // 25º quadro volta ao 1º... (26 % 24 = 2)
+    const a = { sprite: "pessoa_1", golpe: 0.1 }; quadroPessoa(a, 0, 0);
+  } finally { ANIMACOES.cortar.sprites.length = 0; }
+});

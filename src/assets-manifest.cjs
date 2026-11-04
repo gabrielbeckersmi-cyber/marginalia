@@ -4,6 +4,11 @@ const A = [];
 const add = (chave, arquivo, descricao, largura, altura, transparente = true) => A.push({ chave, arquivo, descricao, tipo: "imagem", largura, altura, cor: "#8a6a40", transparente });
 for (let i = 1; i <= 10; i++) add("pessoa_" + i, `pers_pessoa_${i}.png`, `Spritesheet de colono ${i}: 4 colunas (passos) × 8 linhas: andar (baixo, esquerda, direita, cima) e correr (mesma ordem)`, 768, 1536);
 for (let i = 1; i <= 2; i++) add("bandido_" + i, `pers_bandido_${i}.png`, `Spritesheet de bandido ${i}: 4×8 como os colonos (andar + correr)`, 768, 1536);
+// animações extras: só as que têm arte listada em src/jogo/dados/animacoes.js (ver instruções lá)
+{
+  const dados = require("./jogo/dados/animacoes.cjs");
+  for (const [nome, a] of Object.entries(dados.ANIMACOES)) if (!a.base) for (const sp of dados.SPRITES_PESSOA) if (dados.temArte(sp, nome)) add(dados.chaveAnim(sp, nome), dados.arquivoAnim(sp, nome), `Animação "${nome}" de ${sp}: ${a.quadros} quadros, ${a.cols} colunas, 4 direções (baixo, esquerda, direita, cima)`, a.cols * a.cel, 4 * dados.linhasPorDirecao(a) * a.cel);
+}
 for (const e of ["cervo", "coelho", "javali", "lobo", "urso"]) add("animal_" + e, `animal_${e}.png`, `Spritesheet de ${e}: 4×2 (linha 0 = andar para a direita)`, 1024, 512);
 add("plantas", "plantas.png", "Plantas e árvores (4×4, ordem em dados/arte.js)", 768, 768);
 add("recursos", "recursos.png", "Pedras, minérios e objetos de cenário (4×4)", 768, 768);

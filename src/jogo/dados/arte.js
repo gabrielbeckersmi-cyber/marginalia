@@ -1,8 +1,11 @@
 // ARTE — onde está cada folha de sprites e qual tamanho desenhar. Para trocar uma arte: gere de novo (ferramentas/) e mantenha a ordem.
 // folha: { arq, cols, rows, cel } — cel = lado (px) de cada célula já fatiada. Os arquivos ficam em public/assets/.
+import { ANIMACOES, SPRITES_PESSOA, chaveAnim, arquivoAnim, temArte, linhasPorDirecao } from "./animacoes.js";
 export const FOLHAS = {};
 for (let i = 1; i <= 10; i++) FOLHAS["pessoa_" + i] = { arq: `pers_pessoa_${i}.png`, cols: 4, rows: 8, cel: 192 };
 for (let i = 1; i <= 2; i++) FOLHAS["bandido_" + i] = { arq: `pers_bandido_${i}.png`, cols: 4, rows: 8, cel: 192 };
+// animações extras (24 quadros etc.): só entram as que têm arte listada em dados/animacoes.js
+for (const [nome, a] of Object.entries(ANIMACOES)) if (!a.base) for (const sp of SPRITES_PESSOA) if (temArte(sp, nome)) FOLHAS[chaveAnim(sp, nome)] = { arq: arquivoAnim(sp, nome), cols: a.cols, rows: 4 * linhasPorDirecao(a), cel: a.cel };
 for (const e of ["cervo", "coelho", "javali", "lobo", "urso"]) FOLHAS["animal_" + e] = { arq: `animal_${e}.png`, cols: 4, rows: 2, cel: 256 };
 Object.assign(FOLHAS, {
   plantas: { arq: "plantas.png", cols: 4, rows: 4, cel: 192 },

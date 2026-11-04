@@ -109,9 +109,9 @@ export function criarCenaJogo(G, J, { aoPausar, aoMenu }) {
       const dir = emTurno ? { x: 0, y: 0 } : entrada.mover(), segura = ui.baixo && livreMouse && !S.construindo && !emTurno;
       atualizarJogador(J, { dir: S.painel && S.painel !== "mapa" ? { x: 0, y: 0 } : dir, mundo: w, segura, alvo: S.alvo || null, correr: entrada.correr() }, dt);
       // produção segurando o botão no painel de negócio
-      if (S.producao && ui.baixo) { const { b, a } = S.producao, r = avancar(J, p, b, a, dt); p.mov = false; p.trab = true; if (r.erro) aviso(r.erro); else if (r.fim) aviso(`Produziu ${r.qtd}× ${ITENS[r.saida].nome}`); }
+      if (S.producao && ui.baixo) { const { b, a } = S.producao, r = avancar(J, p, b, a, dt); p.mov = false; p.trab = true; p.trabHab = "fabricar"; if (r.erro) aviso(r.erro); else if (r.fim) aviso(`Produziu ${r.qtd}× ${ITENS[r.saida].nome}`); }
       S.producao = null;
-      if (S.cozinha && ui.baixo && S.painel === "fogueira") { const r = cozinhar(J, p, S.cozinha, dt); p.mov = false; p.trab = true; if (r.erro) aviso(r.erro); else if (r.fim) aviso(`Cozinhou ${ITENS[r.saida].nome}`); }
+      if (S.cozinha && ui.baixo && S.painel === "fogueira") { const r = cozinhar(J, p, S.cozinha, dt); p.mov = false; p.trab = true; p.trabHab = "fabricar"; if (r.erro) aviso(r.erro); else if (r.fim) aviso(`Cozinhou ${ITENS[r.saida].nome}`); }
       S.cozinha = null;
       atualizarJogo(J, dt);
       coletarMensagens(S, dt); seguir(S.cam, p, J.M, L, A, dt);

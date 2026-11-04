@@ -1,5 +1,6 @@
 // SPRITES — desenha um quadro de uma folha (spritesheet) pelo nome da folha e índice. Sem a imagem, desenha um marcador simples (nada quebra).
 import { FOLHAS } from "../dados/arte.js";
+import { quadroPessoa } from "./animacao.js";
 import { arte } from "../../nucleo/assets.js";
 
 /** Desenha o quadro `idx` da folha `chave`. (x,y) = centro (opts.centro) ou meio-inferior (padrão, "pés"). tam = lado do quadro em px. */
@@ -21,10 +22,10 @@ function marcador(ctx, x, y, r, chave) {
 const TAM_PESSOA = 84;
 /** Pessoa: folha 4×8. Linhas 0–3 = andar (baixo, esquerda, direita, cima); linhas 4–7 = correr (mesma ordem); colunas = passos. */
 export function desenharPessoa(ctx, e, x, y, { dormindo = false } = {}) {
-  const f = e.mov || e.trab ? Math.floor(e.anim || 0) % 4 : 0, correr = e.mov && e.correndo, linha = (e.dir === undefined ? 0 : e.dir) + (correr ? 4 : 0);
+  const correr = e.mov && e.correndo, q = quadroPessoa(e, e.dir === undefined ? 0 : e.dir);
   sombra(ctx, x, y, 17);
   if (dormindo) { ctx.save(); ctx.translate(x, y - 6); ctx.rotate(-Math.PI / 2 * 0.95); desenharQuadro(ctx, e.sprite, 0, 0, 30, TAM_PESSOA * 0.9); ctx.restore(); return; }
   const balanco = e.mov ? Math.abs(Math.sin((e.anim || 0) * 0.8)) * (correr ? 1 : 2) : 0;
-  desenharQuadro(ctx, e.sprite, linha * 4 + f, x, y - balanco + 3, TAM_PESSOA);
+  desenharQuadro(ctx, q.chave, q.idx, x, y - balanco + 3, TAM_PESSOA);
 }
 export function sombra(ctx, x, y, rx, ry = rx * 0.38) { ctx.fillStyle = "#00000030"; ctx.beginPath(); ctx.ellipse(x, y - 1, rx, ry, 0, 0, 7); ctx.fill(); }

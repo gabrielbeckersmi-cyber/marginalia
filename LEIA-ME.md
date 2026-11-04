@@ -88,3 +88,9 @@ test/                  ← testes automáticos
 árvores/casas/pessoas/animais como sprites em pé (billboards). Abra `proto3d.html` ao lado do jogo (no GitHub Pages: `.../proto3d.html`).
 Controles: WASD andar · Shift correr · botão direito+arrastar ou Q/E girar a câmera · roda zoom · botão esquerdo segurar = coletar/atacar · F comer · R beber.
 Ainda sem painéis (mochila, construir, conversa) — é só para avaliar o visual e a jogabilidade.
+
+## Animações (até 24 quadros)
+Tabela única em `src/jogo/dados/animacoes.cjs` (instruções no topo). Para ativar uma animação nova (ex.: cortar árvore, 24 quadros):
+salve `public/assets/pers_pessoa_1_cortar.png` (4 direções: baixo, esquerda, direita, cima; cada direção em `ceil(quadros/cols)` linhas) e
+coloque `"pessoa_1"` (ou `"*"`) em `sprites` da animação. Sem arte, o jogo usa o andar. A escolha do quadro fica em `src/jogo/visual/animacao.js`
+(2D e 2.5D usam a mesma). Velocidade do jogador: `C.VEL_FATOR` (protótipo 2.5D = 1.3; 2D = 1).

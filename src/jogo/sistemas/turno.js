@@ -57,7 +57,7 @@ export function atualizarTurno(J, d) {
   if (!b || b.prog < 1) return cancelarTurno(J, "O local de trabalho não existe mais");
   if (p.dormindo) return cancelarTurno(J, "Você desmaiou de cansaço");
   if (J.jogadorMorreu) { J.turno = null; return; }
-  T.t += d; p.trab = true; p.mov = false; p.anim = (p.anim || 0) + d * 3;
+  T.t += d; p.trab = true; p.trabHab = "fabricar"; p.mov = false; p.anim = (p.anim || 0) + d * 3;
   const dn = CONSTR[b.tipo];
   if (dn.mercado) { ganhar(p, "comercio", 0.05 * d); T.msg = "Atendendo no balcão"; }
   else {

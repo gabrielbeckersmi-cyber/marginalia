@@ -4,6 +4,7 @@ export const C = {
   N: 1800,               // mundo N×N tiles (ilha ≈ 1350 tiles de diâmetro ÷ 2 tiles/s ≈ 11 min para atravessar)
   DIA_SEG: 1440,         // 1 dia de jogo = 24 min reais (1 hora = 60 s)
   HORA_INICIAL: 7,
+  VEL_FATOR: 1,           // multiplicador geral de movimento do jogador (o protótipo 2.5D usa 1.3)
   VEL_JOGADOR: 96,       // px/s
   VEL_NPC: 84,
   VEL_RIO: 0.5,          // multiplicador ao atravessar vau de rio

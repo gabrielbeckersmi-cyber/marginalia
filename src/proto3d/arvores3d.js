@@ -5,7 +5,7 @@ import * as THREE from "three";
 import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader.js";
 
 export const MODELOS = { 1: ["CommonTree_1", "CommonTree_2", "CommonTree_3"], 2: ["PineTree_1", "PineTree_2", "PineTree_3"], 3: ["CommonTree_Dead_1", "CommonTree_Dead_2"], 4: ["CommonTree_Autumn_1", "CommonTree_Autumn_2"], 24: ["Willow_1", "Willow_2"] };
-const ESCALA = 0.02, MAX = 1800;              // modelo ≈ 250 unidades de altura → ≈ 5 unidades do jogo (1 unidade = 1 tile)
+const ESCALA = 0.03, MAX = 1800;              // modelo ≈ 250 unidades de altura → ≈ 5 unidades do jogo (1 unidade = 1 tile)
 // material do FBX → textura e brilho. esc = repetições por unidade do modelo
 const REGRAS = {
   Wood: { tex: "casca", esc: 1 / 60, k: 0.8 }, LightWood: { tex: "casca", esc: 1 / 60, k: 1.0 }, White: { tex: "casca_vidoeiro", esc: 1 / 70, k: 1 }, Black: { cor: "#1c1612" },

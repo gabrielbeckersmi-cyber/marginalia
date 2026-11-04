@@ -31,14 +31,14 @@ export function moverJogador(J, dir, dt, correr = false) {
   if (!J.chegando) desencalhar(J.M, p);
   if (!m || p.dormindo || J.chegando || J.jogadorMorreu || J.turno) { p.mov = false; return; }
   const corre = correr && !p.exausto && p.stam > 0;
-  let vel = C.VEL_JOGADOR * (corre ? C.CORRIDA : 1); if (terreno(J.M, tileDe(p.x), tileDe(p.y)) === T.RIO) vel *= C.VEL_RIO;
+  let vel = C.VEL_JOGADOR * C.VEL_FATOR * (corre ? C.CORRIDA : 1); if (terreno(J.M, tileDe(p.x), tileDe(p.y)) === T.RIO) vel *= C.VEL_RIO;
   const vx = (dir.x / m) * vel * dt, vy = (dir.y / m) * vel * dt;
   const n = Math.max(1, Math.ceil(Math.hypot(vx, vy) / 20));
   for (let i = 0; i < n; i++) {
     const nx = p.x + vx / n, ny = p.y + vy / n;
     if (livre(J.M, nx, ny)) { p.x = nx; p.y = ny; } else if (livre(J.M, nx, p.y)) p.x = nx; else if (livre(J.M, p.x, ny)) p.y = ny;
   }
-  p.mov = true; p.correndo = corre; p.anim = (p.anim || 0) + dt * (corre ? 10 : 7);
+  p.mov = true; p.correndo = corre; p.anim = (p.anim || 0) + dt * C.VEL_FATOR * (corre ? 10 : 7);
   p.dir = Math.abs(dir.x) > Math.abs(dir.y) ? (dir.x < 0 ? 1 : 2) : (dir.y < 0 ? 3 : 0);
 }
 
@@ -96,7 +96,7 @@ function trabalhar(J, a, dt) {
     const pc = podeColetar(p, featEm(J.M, a.tx, a.ty)); if (!pc.ok) { J.acao = { tipo: "erro", msg: pc.motivo }; return; }
     if (p.exausto) { J.acao = { tipo: "erro", msg: "Sem fôlego — descanse um pouco" }; return; }
     const k = a.tx + "," + a.ty; if (!J.acao || J.acao.chave !== k) J.acao = { tipo: "coletar", chave: k, prog: 0, nome: FEAT[a.f].n };
-    J.acao.prog += (dt * velocidade(hab(p, c.hab)) * bonusFerr(pc.ferr)) / c.base; p.mov = false; p.trab = true; p.dir = dirPara(p, a); gastarFolego(p, STAMINA_TRAB[c.hab] ?? 1.5, dt);
+    J.acao.prog += (dt * velocidade(hab(p, c.hab)) * bonusFerr(pc.ferr)) / c.base; p.mov = false; p.trab = true; p.trabHab = c.hab; p.dir = dirPara(p, a); gastarFolego(p, STAMINA_TRAB[c.hab] ?? 1.5, dt);
     if (J.acao.prog >= 1) {
       const ganho = [];
       for (const [item, [lo, hi]] of Object.entries(c.drops)) { const n = lo + Math.floor(J.rng() * (hi - lo + 1)), got = inv.dar(p, item, n); if (got) { registrarOferta(J, item, got); ganho.push(`+${got} ${ITENS[item].nome}`); } else ganho.push("Mochila cheia"); }
@@ -111,13 +111,13 @@ function trabalhar(J, a, dt) {
   if (a.tipo === "agua" || (a.tipo === "constr" && CONSTR[a.ref.tipo].agua && a.ref.prog >= 1)) {
     if (p.sede < 2 && p.cantil >= 3) { J.acao = { tipo: "erro", msg: "Sem sede" }; return; }
     if (!J.acao || J.acao.tipo !== "beber") J.acao = { tipo: "beber", prog: 0, nome: "Bebendo" };
-    J.acao.prog += dt / 1.1; p.trab = true;
+    J.acao.prog += dt / 1.1; p.trab = true; p.trabHab = "beber";
     if (J.acao.prog >= 1) { nec.beberRio(p); J.avisos.push({ tipo: "item", texto: "Sede saciada — cantil cheio" }); J.acao = null; }
     return;
   }
   if (a.tipo === "constr" && a.ref.prog < 1 && a.ref.dono === 0) {
     if (p.exausto) { J.acao = { tipo: "erro", msg: "Sem fôlego — descanse um pouco" }; return; }
-    const r = trabalharObra(J, p, a.ref, dt); p.trab = true; p.mov = false; p.dir = dirPara(p, a); gastarFolego(p, STAMINA_TRAB.construcao, dt);
+    const r = trabalharObra(J, p, a.ref, dt); p.trab = true; p.trabHab = "construcao"; p.mov = false; p.dir = dirPara(p, a); gastarFolego(p, STAMINA_TRAB.construcao, dt);
     J.acao = r.estado === "faltam" ? { tipo: "erro", msg: `Faltam materiais: ${ITENS[r.item].nome}` } : r.estado === "pronto" ? null : { tipo: "obra", prog: a.ref.prog, obra: a.ref, nome: CONSTR[a.ref.tipo].nome };
     return;
   }
@@ -168,7 +168,7 @@ export const atacar = (J, alvo = null) => (J.jogador.dormindo || J.chegando || J
 
 /** Chamado uma vez por passo (1/60 s) com o que o jogador está pedindo. */
 export function atualizarJogador(J, ctl, dt) {
-  const p = J.jogador; p.trab = false; p.correndo = false;
+  const p = J.jogador; p.trab = false; p.trabHab = null; p.correndo = false;
   if (p.stam === undefined) p.stam = ST.max;
   if (J.jogadorMorreu) return;
   moverJogador(J, ctl.dir || { x: 0, y: 0 }, dt, !!ctl.correr);

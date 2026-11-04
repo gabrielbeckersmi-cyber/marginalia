@@ -11,12 +11,14 @@ import { CONSTR } from "../jogo/dados/construcoes.js";
 import { ANIMAIS } from "../jogo/dados/animais.js";
 import { T, featEm, setFeat } from "../jogo/mundo.js";
 import { hash2, fbm } from "../jogo/rng.js";
+import { quadroPessoa } from "../jogo/visual/animacao.js";
 import { criarArvores3D } from "./arvores3d.js";
 
+C.VEL_FATOR = 1.3;                              // protótipo: movimento 30% mais rápido (o jogo 2D segue em 1)
 const TS = C.TILE, CHK = 32, RAIO_CHUNKS = 4, NIVEL_AGUA = -0.2;
 // ── ajustes de câmera e escala (estimados a partir dos prints do Gabriel) ──
 const PITCH_MIN = 0.10, PITCH_MAX = 0.28;     // inclinação vertical da câmera em radianos (≈ 6° a 16°)
-const ESCALA_ARVORE = 2.4, ESPACO_ARVORES = 4.6; // árvores bem maiores e afastadas (tiles entre os troncos)
+const ESCALA_ARVORE = 2.4, ESPACO_ARVORES = 6.4; // árvores bem maiores e afastadas (tiles entre os troncos)
 const sx = (v) => v / TS;
 
 // ── luz do dia (igual ao jogo 2D) ──
@@ -239,9 +241,9 @@ async function iniciar() {
     const pessoa = (e, mov) => {
       if (Math.abs(sx(e.x) - px) > R + 4 || Math.abs(sx(e.y) - pz) > R + 4) return; const x = sx(e.x), z = sx(e.y), y = mundo.alturaEm(x, z);
       const fa = FACE[e.dir === undefined ? 0 : e.dir], fx = mov ? mov.x : fa[0], fz = mov ? mov.y : fa[1];
-      const correr = e.mov && e.correndo, linha = linhaPessoa(e, fx, fz) + (correr ? 4 : 0), f = e.mov || e.trab ? Math.floor(e.anim || 0) % 4 : 0;
+      const q = quadroPessoa(e, linhaPessoa(e, fx, fz), S.tempo);
       const bal = e.mov ? Math.abs(Math.sin((e.anim || 0) * 0.8)) * 0.04 : 0;
-      tem(e.sprite).add(x, y + bal, z, 1.75, 1.75, linha * 4 + f, e.flash > 0 ? 0.6 : 1); sombra(x, y, z, 0.4);
+      tem(q.chave).add(x, y + bal, z, 1.75, 1.75, q.idx, e.flash > 0 ? 0.6 : 1); sombra(x, y, z, 0.4);
       if (e.nome && e !== p && Math.hypot(e.x - p.x, e.y - p.y) < 170) rotulos.push([x, y + 1.9, z, e.nome]);
     };
     rotulos.length = 0;
