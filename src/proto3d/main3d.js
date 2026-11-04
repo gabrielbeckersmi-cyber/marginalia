@@ -9,10 +9,13 @@ import { carregarArte, arte } from "../nucleo/assets.js";
 import { FOLHAS, FEAT } from "../jogo/dados/arte.js";
 import { CONSTR } from "../jogo/dados/construcoes.js";
 import { ANIMAIS } from "../jogo/dados/animais.js";
-import { T, featEm, terreno } from "../jogo/mundo.js";
+import { T, featEm, setFeat } from "../jogo/mundo.js";
 import { hash2, fbm } from "../jogo/rng.js";
 
 const TS = C.TILE, CHK = 32, RAIO_CHUNKS = 4, NIVEL_AGUA = -0.2;
+// ── ajustes de câmera e escala (estimados a partir dos prints do Gabriel) ──
+const PITCH_MIN = 0.10, PITCH_MAX = 0.28;     // inclinação vertical da câmera em radianos (≈ 6° a 16°)
+const ESCALA_ARVORE = 2.4, ESPACO_ARVORES = 4.6; // árvores bem maiores e afastadas (tiles entre os troncos)
 const sx = (v) => v / TS;
 
 // ── luz do dia (igual ao jogo 2D) ──
@@ -71,11 +74,12 @@ function criarMundo3D(J) {
 }
 
 // ── sprites em pé (billboards instanciados): um grupo por folha de sprites ──
-const uRight = { value: new THREE.Vector3(1, 0, 0) }, uTint = { value: new THREE.Color(1, 1, 1) }, uFogCor = { value: new THREE.Color("#b9d4d8") }, uFogPerto = { value: 50 }, uFogLonge = { value: 120 };
+const uRight = { value: new THREE.Vector3(1, 0, 0) }, uTint = { value: new THREE.Color(1, 1, 1) }, uFogCor = { value: new THREE.Color("#b9d4d8") }, uFogPerto = { value: 60 }, uFogLonge = { value: 125 };
 const VERT = `attribute vec3 iPos; attribute vec2 iSize; attribute vec4 iUV; attribute float iAlfa; uniform vec3 uRight; varying vec2 vUv; varying float vAlfa; varying float vDist;
 void main(){ vec3 wp = iPos + uRight * position.x * iSize.x + vec3(0.0,1.0,0.0) * position.y * iSize.y; vUv = iUV.xy + uv * iUV.zw; vAlfa = iAlfa; vec4 mv = viewMatrix * vec4(wp,1.0); vDist = length(mv.xyz); gl_Position = projectionMatrix * mv; }`;
 const FRAG = `uniform sampler2D map; uniform vec3 uTint; uniform vec3 uFogCor; uniform float uFogPerto; uniform float uFogLonge; varying vec2 vUv; varying float vAlfa; varying float vDist;
-void main(){ vec4 c = texture2D(map, vUv); if (c.a < 0.45) discard; if (vAlfa < 0.99 && mod(floor(gl_FragCoord.x) + floor(gl_FragCoord.y), 2.0) < 1.0) discard;
+void main(){ vec4 c = texture2D(map, vUv); if (c.a < 0.45) discard;
+ float perto = smoothstep(1.5, 5.0, vDist); if (perto < 1.0 && fract(sin(dot(gl_FragCoord.xy, vec2(12.9898, 78.233))) * 43758.5453) > perto) discard; if (vAlfa < 0.99 && mod(floor(gl_FragCoord.x) + floor(gl_FragCoord.y), 2.0) < 1.0) discard;
  vec3 rgb = c.rgb * uTint; float f = smoothstep(uFogPerto, uFogLonge, vDist); gl_FragColor = vec4(mix(rgb, uFogCor, f), 1.0);
  #include <colorspace_fragment>
 }`;
@@ -114,18 +118,32 @@ class Grupo {
   fim() { if (!this.ok) return; for (const a of this.at) a.needsUpdate = true; this.g.instanceCount = this.n; this.mesh.visible = this.n > 0; }
 }
 
+// ── árvores mais espaçadas (só no protótipo): mantém uma por vez numa distância mínima, em ordem sorteada, para a mata não tapar o personagem ──
+function espacarArvores(J) {
+  const M = J.M, N = M.N, alta = (f) => { const d = FEAT[f]; return d && d.bloq && (d.grupos.includes("madeira") || f === 4); }, lista = [];
+  for (let i = 0; i < N * N; i++) { const f = M.feat[i]; if (f && alta(f)) lista.push(i); }
+  const pri = (i) => hash2(i % N, (i / N) | 0, 77); lista.sort((a, b) => pri(a) - pri(b));
+  const cel = ESPACO_ARVORES, gw = Math.ceil(N / cel) + 1, grade = new Map(), r2 = ESPACO_ARVORES * ESPACO_ARVORES;
+  for (const i of lista) {
+    const x = i % N, y = (i / N) | 0, cx = (x / cel) | 0, cy = (y / cel) | 0; let ok = true;
+    for (let dy = -1; dy <= 1 && ok; dy++) for (let dx = -1; dx <= 1 && ok; dx++) { const v = grade.get((cy + dy) * gw + cx + dx); if (v) for (const q of v) if ((q[0] - x) ** 2 + (q[1] - y) ** 2 < r2) { ok = false; break; } }
+    if (ok) { const k = cy * gw + cx; (grade.get(k) || grade.set(k, []).get(k)).push([x, y]); } else setFeat(M, x, y, 0);
+  }
+}
+
 // ── partida ──
 async function iniciar() {
   await carregarArte();
   const J = novoJogo((Date.now() % 100000) + 1, { sprite: new URLSearchParams(location.search).get("p") || "pessoa_2", nome: "Viajante" });
   const p = J.jogador, M = J.M;
+  espacarArvores(J);
   J.chegando = false; p.x = (M.porto.tx + 0.5) * TS; p.y = (M.porto.ty - 2.5) * TS; p.dir = 3; p.stam = 100;
 
   const canvas = document.getElementById("tela3d");
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: "high-performance" });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
   const cena = new THREE.Scene(), cam = new THREE.PerspectiveCamera(48, 1, 0.1, 400);
-  cena.fog = new THREE.Fog("#b9d4d8", 50, 120);
+  cena.fog = new THREE.Fog("#b9d4d8", 60, 125);
   const luzAmb = new THREE.HemisphereLight(0xffffff, 0x6b7a4a, 1.05), sol = new THREE.DirectionalLight(0xffffff, 1.1); sol.position.set(-0.5, 1, 0.35);
   cena.add(luzAmb, sol);
   const mundo = criarMundo3D(J); cena.add(mundo.grupo);
@@ -142,7 +160,7 @@ async function iniciar() {
   const anel = new THREE.Mesh(new THREE.RingGeometry(0.55, 0.7, 28).rotateX(-Math.PI / 2), new THREE.MeshBasicMaterial({ color: 0xf6e08a, transparent: true, opacity: 0.9, depthTest: false })); anel.renderOrder = 5; anel.visible = false; cena.add(anel);
 
   // câmera orbital
-  const orb = { yaw: 0.0, pitch: 0.5, dist: 9, alvo: new THREE.Vector3(sx(p.x), 1.2, sx(p.y)) };
+  const orb = { yaw: 0.0, pitch: 0.19, dist: 9.5, alvo: new THREE.Vector3(sx(p.x), 1.2, sx(p.y)) };
   const S = { J, orb, teclas: new Set(), baixo: false, alvo: null, mouse: { x: 0, y: 0 }, arrasta: false, msgs: [], tempo: 0, movimento: { x: 0, y: 1 }, acc: 0 };
   const redimensionar = () => { const w = window.innerWidth, h = window.innerHeight; renderer.setSize(w, h, false); cam.aspect = w / h; cam.updateProjectionMatrix(); };
   window.addEventListener("resize", redimensionar); redimensionar();
@@ -151,8 +169,8 @@ async function iniciar() {
   canvas.addEventListener("contextmenu", (e) => e.preventDefault());
   canvas.addEventListener("pointerdown", (e) => { S.mouse.x = e.clientX; S.mouse.y = e.clientY; if (e.button === 2 || e.button === 1) S.arrasta = true; else S.baixo = true; canvas.setPointerCapture(e.pointerId); });
   window.addEventListener("pointerup", (e) => { if (e.button === 2 || e.button === 1) S.arrasta = false; else S.baixo = false; });
-  canvas.addEventListener("pointermove", (e) => { if (S.arrasta) { orb.yaw -= (e.clientX - S.mouse.x) * 0.006; orb.pitch = Math.max(0.12, Math.min(1.3, orb.pitch + (e.clientY - S.mouse.y) * 0.004)); } S.mouse.x = e.clientX; S.mouse.y = e.clientY; });
-  canvas.addEventListener("wheel", (e) => { orb.dist = Math.max(3.5, Math.min(26, orb.dist * (1 + Math.sign(e.deltaY) * 0.1))); e.preventDefault(); }, { passive: false });
+  canvas.addEventListener("pointermove", (e) => { if (S.arrasta) { orb.yaw -= (e.clientX - S.mouse.x) * 0.006; orb.pitch = Math.max(PITCH_MIN, Math.min(PITCH_MAX, orb.pitch + (e.clientY - S.mouse.y) * 0.0012)); } S.mouse.x = e.clientX; S.mouse.y = e.clientY; });
+  canvas.addEventListener("wheel", (e) => { orb.dist = Math.max(5, Math.min(18, orb.dist * (1 + Math.sign(e.deltaY) * 0.1))); e.preventDefault(); }, { passive: false });
 
   // ── escolha do alvo sob o mouse (no espaço da tela: funciona com árvores altas) ──
   const v3 = new THREE.Vector3();
@@ -164,7 +182,7 @@ async function iniciar() {
     for (const a of J.animais) { if (Math.abs(sx(a.x) - sx(p.x)) > 40 || Math.abs(sx(a.y) - sx(p.y)) > 40) continue; const gy = mundo.alturaEm(sx(a.x), sx(a.y)); consider(sx(a.x), gy + 0.5, sx(a.y), 44, () => alvoEm(J, a.x, a.y - 20)); }
     const tx0 = Math.floor(sx(p.x)), ty0 = Math.floor(sx(p.y));
     for (let ty = ty0 - 16; ty <= ty0 + 16; ty++) for (let tx = tx0 - 16; tx <= tx0 + 16; tx++) {
-      const f = featEm(M, tx, ty); if (!f) continue; const d = FEAT[f]; if (!d) continue; const alta = d.grupos.includes("madeira") || f === 4, h = sx(d.tam) * (alta ? 1.5 : 1.1);
+      const f = featEm(M, tx, ty); if (!f) continue; const d = FEAT[f]; if (!d) continue; const alta = d.grupos.includes("madeira") || f === 4, h = sx(d.tam) * (alta ? ESCALA_ARVORE : 1.1);
       consider(tx + 0.5, mundo.alturaEm(tx + 0.5, ty + 0.5) + h * 0.4, ty + 0.5, alta ? 70 : 34, () => alvoEm(J, (tx + 0.5) * TS, (ty + 0.5) * TS));
     }
     for (const b of J.construcoes) { const cx = b.tx + b.w / 2, cz = b.ty + b.h / 2; if (Math.abs(cx - sx(p.x)) > 40 || Math.abs(cz - sx(p.y)) > 40) continue; consider(cx, mundo.alturaEm(cx, cz) + 1.5, cz, 90, () => alvoEm(J, cx * TS, cz * TS)); }
@@ -200,7 +218,7 @@ async function iniciar() {
     const R = 46, x0 = Math.max(0, Math.floor(px - R)), x1 = Math.min(M.N - 1, Math.ceil(px + R)), y0 = Math.max(0, Math.floor(pz - R)), y1 = Math.min(M.N - 1, Math.ceil(pz + R));
     for (let ty = y0; ty <= y1; ty++) for (let tx = x0; tx <= x1; tx++) {
       const f = M.feat[ty * M.N + tx]; if (!f) continue; const d = FEAT[f]; if (!d) continue;
-      const alta = d.grupos.includes("madeira") || f === 4, w = sx(d.tam) * (alta ? 1.5 : 1.1), x = tx + 0.5 + (hash2(tx, ty, 5) - 0.5) * 0.17, z = ty + 0.9, y = mundo.alturaEm(x, z);
+      const alta = d.grupos.includes("madeira") || f === 4, w = sx(d.tam) * (alta ? ESCALA_ARVORE : 1.1), x = tx + 0.5 + (hash2(tx, ty, 5) - 0.5) * 0.17, z = ty + 0.9, y = mundo.alturaEm(x, z);
       tem(d.f[0]).add(x, y - 0.05, z, w, w, d.f[1]); if (d.bloq) sombra(x, y, z, w * 0.22);
     }
     // construções
