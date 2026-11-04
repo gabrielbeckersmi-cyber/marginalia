@@ -148,3 +148,16 @@ test("colonos sem casa alugam uma casa anunciada em vez de construir; ensino ren
   assert.equal(C.ENSINO.fator, 0.04);
   const { serializar, restaurar } = await import("../src/jogo/estado.js"); const J2 = restaurar(JSON.parse(JSON.stringify(serializar(J)))); const b2 = J2.constrPorId.get(b.id); assert.equal(b2.inquilino, e.id); assert.equal(b2.criador, 0);
 });
+
+test("plantas: arbusto, flores e samambaia rendem fibra sem ferramenta", async () => {
+  const { podeColetar } = await import("../src/jogo/sistemas/ferramentas.js");
+  const { COLETA } = await import("../src/jogo/dados/coleta.js");
+  const e = { inv: {}, hab: [], equip: { mao: null, escudo: null } };
+  for (const f of [6, 13, 14]) { assert.ok(COLETA[f].drops.fibra, "feat " + f + " dá fibra"); assert.equal(podeColetar(e, f).ok, true); }
+});
+
+test("mapa: marcador de destino é salvo e restaurado", async () => {
+  const { serializar, restaurar } = await import("../src/jogo/estado.js");
+  const J = novoJogo(7, {}); J.marcador = { tx: 900, ty: 800 };
+  assert.deepEqual(restaurar(JSON.parse(JSON.stringify(serializar(J)))).marcador, { tx: 900, ty: 800 });
+});

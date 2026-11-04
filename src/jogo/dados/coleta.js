@@ -14,6 +14,9 @@ export const COLETA = {
   8: { hab: "coleta", base: 2.5, drops: { fibra: [1, 2] }, vira: 0, dias: 2 },
   9: { hab: "coleta", base: 2.5, drops: { fibra: [1, 3] }, vira: 0, dias: 2 },
   12: { hab: "coleta", base: 2, drops: { fibra: [1, 2] }, vira: 0, dias: 2 },
+  6: { hab: "coleta", base: 3, drops: { fibra: [1, 3] }, vira: 0, dias: 3 },    // arbusto
+  13: { hab: "coleta", base: 2, drops: { fibra: [1, 2] }, vira: 0, dias: 2 },   // flores
+  14: { hab: "coleta", base: 2.5, drops: { fibra: [1, 2] }, vira: 0, dias: 2 }, // samambaia
   15: { hab: "coleta", base: 3, drops: { trigo: [1, 2] }, vira: 0, dias: 3 },
   16: { hab: "coleta", base: 3, drops: { repolho: [1, 2] }, vira: 0, dias: 3 },
   17: { hab: "mineracao", ferr: "mineracao", tier: 1, min: 1, base: 8, drops: { pedra: [2, 4] }, vira: 0, dias: 5 },

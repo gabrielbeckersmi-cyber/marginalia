@@ -1,0 +1,98 @@
+[
+ {
+  "nome": "folha2_pessoa_1",
+  "prompt": "character sprite sheet of a young man with short black hair and tan skin wearing a blue linen tunic and brown trousers, drawn from a high top-down three-quarter camera angle, small chibi body with big head, the exact same character and outfit in every cell. ONE image with a strict grid of exactly 4 columns by 6 rows of equal square cells, no overlaps, same size in every cell, every character's feet on the same baseline of its cell, generous empty spacing between cells. Rows 1 to 3 are a calm WALK cycle with 4 frames per row (frame 1 left foot forward, frame 2 passing pose, frame 3 right foot forward, frame 4 passing pose, small arm swing): row 1 facing down toward the camera, row 2 facing RIGHT in clean side profile view, row 3 facing up away from the camera showing the back. Rows 4 to 6 are a fast RUN cycle with 4 frames per row (clearly different from walking: body leaning forward, long stride with legs wide apart and one foot off the ground, arms bent and pumping, clothes and hair streaming behind): row 4 running straight toward the camera in FRONT view (face and chest fully visible, body symmetrical, not turned sideways, legs alternating one forward one back), row 5 running to the RIGHT in clean side profile view, row 6 running up away from the camera showing the back",
+  "transparente": true,
+  "tamanho": 2048,
+  "resolucao": "2K",
+  "proporcao": "3:4"
+ },
+ {
+  "nome": "folha2_pessoa_2",
+  "prompt": "character sprite sheet of a young woman with a long auburn braid and fair skin wearing a red wool dress with a white apron, drawn from a high top-down three-quarter camera angle, small chibi body with big head, the exact same character and outfit in every cell. ONE image with a strict grid of exactly 4 columns by 6 rows of equal square cells, no overlaps, same size in every cell, every character's feet on the same baseline of its cell, generous empty spacing between cells. Rows 1 to 3 are a calm WALK cycle with 4 frames per row (frame 1 left foot forward, frame 2 passing pose, frame 3 right foot forward, frame 4 passing pose, small arm swing): row 1 facing down toward the camera, row 2 facing RIGHT in clean side profile view, row 3 facing up away from the camera showing the back. Rows 4 to 6 are a fast RUN cycle with 4 frames per row (clearly different from walking: body leaning forward, long stride with legs wide apart and one foot off the ground, arms bent and pumping, clothes and hair streaming behind): row 4 running straight toward the camera in FRONT view (face and chest fully visible, body symmetrical, not turned sideways, legs alternating one forward one back), row 5 running to the RIGHT in clean side profile view, row 6 running up away from the camera showing the back",
+  "transparente": true,
+  "tamanho": 2048,
+  "resolucao": "2K",
+  "proporcao": "3:4"
+ },
+ {
+  "nome": "folha2_pessoa_3",
+  "prompt": "character sprite sheet of a stocky man with a bushy red beard and pale freckled skin wearing an ochre yellow tunic and leather vest, drawn from a high top-down three-quarter camera angle, small chibi body with big head, the exact same character and outfit in every cell. ONE image with a strict grid of exactly 4 columns by 6 rows of equal square cells, no overlaps, same size in every cell, every character's feet on the same baseline of its cell, generous empty spacing between cells. Rows 1 to 3 are a calm WALK cycle with 4 frames per row (frame 1 left foot forward, frame 2 passing pose, frame 3 right foot forward, frame 4 passing pose, small arm swing): row 1 facing down toward the camera, row 2 facing RIGHT in clean side profile view, row 3 facing up away from the camera showing the back. Rows 4 to 6 are a fast RUN cycle with 4 frames per row (clearly different from walking: body leaning forward, long stride with legs wide apart and one foot off the ground, arms bent and pumping, clothes and hair streaming behind): row 4 running straight toward the camera in FRONT view (face and chest fully visible, body symmetrical, not turned sideways, legs alternating one forward one back), row 5 running to the RIGHT in clean side profile view, row 6 running up away from the camera showing the back",
+  "transparente": true,
+  "tamanho": 2048,
+  "resolucao": "2K",
+  "proporcao": "3:4"
+ },
+ {
+  "nome": "folha2_pessoa_4",
+  "prompt": "character sprite sheet of a woman with dark curly hair and deep brown skin wearing a lapis blue dress and cream headscarf, drawn from a high top-down three-quarter camera angle, small chibi body with big head, the exact same character and outfit in every cell. ONE image with a strict grid of exactly 4 columns by 6 rows of equal square cells, no overlaps, same size in every cell, every character's feet on the same baseline of its cell, generous empty spacing between cells. Rows 1 to 3 are a calm WALK cycle with 4 frames per row (frame 1 left foot forward, frame 2 passing pose, frame 3 right foot forward, frame 4 passing pose, small arm swing): row 1 facing down toward the camera, row 2 facing RIGHT in clean side profile view, row 3 facing up away from the camera showing the back. Rows 4 to 6 are a fast RUN cycle with 4 frames per row (clearly different from walking: body leaning forward, long stride with legs wide apart and one foot off the ground, arms bent and pumping, clothes and hair streaming behind): row 4 running straight toward the camera in FRONT view (face and chest fully visible, body symmetrical, not turned sideways, legs alternating one forward one back), row 5 running to the RIGHT in clean side profile view, row 6 running up away from the camera showing the back",
+  "transparente": true,
+  "tamanho": 2048,
+  "resolucao": "2K",
+  "proporcao": "3:4"
+ },
+ {
+  "nome": "folha2_pessoa_5",
+  "prompt": "character sprite sheet of a thin man with bald head and grey mustache and olive skin wearing a grey hooded cloak over green tunic, drawn from a high top-down three-quarter camera angle, small chibi body with big head, the exact same character and outfit in every cell. ONE image with a strict grid of exactly 4 columns by 6 rows of equal square cells, no overlaps, same size in every cell, every character's feet on the same baseline of its cell, generous empty spacing between cells. Rows 1 to 3 are a calm WALK cycle with 4 frames per row (frame 1 left foot forward, frame 2 passing pose, frame 3 right foot forward, frame 4 passing pose, small arm swing): row 1 facing down toward the camera, row 2 facing RIGHT in clean side profile view, row 3 facing up away from the camera showing the back. Rows 4 to 6 are a fast RUN cycle with 4 frames per row (clearly different from walking: body leaning forward, long stride with legs wide apart and one foot off the ground, arms bent and pumping, clothes and hair streaming behind): row 4 running straight toward the camera in FRONT view (face and chest fully visible, body symmetrical, not turned sideways, legs alternating one forward one back), row 5 running to the RIGHT in clean side profile view, row 6 running up away from the camera showing the back",
+  "transparente": true,
+  "tamanho": 2048,
+  "resolucao": "2K",
+  "proporcao": "3:4"
+ },
+ {
+  "nome": "folha2_pessoa_6",
+  "prompt": "character sprite sheet of a girl-like young woman with short blonde hair and light skin wearing a cream shirt, brown skirt and red scarf, drawn from a high top-down three-quarter camera angle, small chibi body with big head, the exact same character and outfit in every cell. ONE image with a strict grid of exactly 4 columns by 6 rows of equal square cells, no overlaps, same size in every cell, every character's feet on the same baseline of its cell, generous empty spacing between cells. Rows 1 to 3 are a calm WALK cycle with 4 frames per row (frame 1 left foot forward, frame 2 passing pose, frame 3 right foot forward, frame 4 passing pose, small arm swing): row 1 facing down toward the camera, row 2 facing RIGHT in clean side profile view, row 3 facing up away from the camera showing the back. Rows 4 to 6 are a fast RUN cycle with 4 frames per row (clearly different from walking: body leaning forward, long stride with legs wide apart and one foot off the ground, arms bent and pumping, clothes and hair streaming behind): row 4 running straight toward the camera in FRONT view (face and chest fully visible, body symmetrical, not turned sideways, legs alternating one forward one back), row 5 running to the RIGHT in clean side profile view, row 6 running up away from the camera showing the back",
+  "transparente": true,
+  "tamanho": 2048,
+  "resolucao": "2K",
+  "proporcao": "3:4"
+ },
+ {
+  "nome": "folha2_pessoa_7",
+  "prompt": "character sprite sheet of a tall man with long brown hair tied back and brown skin wearing a purple tunic with a leather belt, drawn from a high top-down three-quarter camera angle, small chibi body with big head, the exact same character and outfit in every cell. ONE image with a strict grid of exactly 4 columns by 6 rows of equal square cells, no overlaps, same size in every cell, every character's feet on the same baseline of its cell, generous empty spacing between cells. Rows 1 to 3 are a calm WALK cycle with 4 frames per row (frame 1 left foot forward, frame 2 passing pose, frame 3 right foot forward, frame 4 passing pose, small arm swing): row 1 facing down toward the camera, row 2 facing RIGHT in clean side profile view, row 3 facing up away from the camera showing the back. Rows 4 to 6 are a fast RUN cycle with 4 frames per row (clearly different from walking: body leaning forward, long stride with legs wide apart and one foot off the ground, arms bent and pumping, clothes and hair streaming behind): row 4 running straight toward the camera in FRONT view (face and chest fully visible, body symmetrical, not turned sideways, legs alternating one forward one back), row 5 running to the RIGHT in clean side profile view, row 6 running up away from the camera showing the back",
+  "transparente": true,
+  "tamanho": 2048,
+  "resolucao": "2K",
+  "proporcao": "3:4"
+ },
+ {
+  "nome": "folha2_pessoa_8",
+  "prompt": "character sprite sheet of an older woman with white hair in a bun and pale wrinkled skin wearing a dark green dress and shawl, drawn from a high top-down three-quarter camera angle, small chibi body with big head, the exact same character and outfit in every cell. ONE image with a strict grid of exactly 4 columns by 6 rows of equal square cells, no overlaps, same size in every cell, every character's feet on the same baseline of its cell, generous empty spacing between cells. Rows 1 to 3 are a calm WALK cycle with 4 frames per row (frame 1 left foot forward, frame 2 passing pose, frame 3 right foot forward, frame 4 passing pose, small arm swing): row 1 facing down toward the camera, row 2 facing RIGHT in clean side profile view, row 3 facing up away from the camera showing the back. Rows 4 to 6 are a fast RUN cycle with 4 frames per row (clearly different from walking: body leaning forward, long stride with legs wide apart and one foot off the ground, arms bent and pumping, clothes and hair streaming behind): row 4 running straight toward the camera in FRONT view (face and chest fully visible, body symmetrical, not turned sideways, legs alternating one forward one back), row 5 running to the RIGHT in clean side profile view, row 6 running up away from the camera showing the back",
+  "transparente": true,
+  "tamanho": 2048,
+  "resolucao": "2K",
+  "proporcao": "3:4"
+ },
+ {
+  "nome": "folha2_pessoa_9",
+  "prompt": "character sprite sheet of a broad man with a black beard and a straw hat and sun tanned skin wearing a white shirt and brown overalls, drawn from a high top-down three-quarter camera angle, small chibi body with big head, the exact same character and outfit in every cell. ONE image with a strict grid of exactly 4 columns by 6 rows of equal square cells, no overlaps, same size in every cell, every character's feet on the same baseline of its cell, generous empty spacing between cells. Rows 1 to 3 are a calm WALK cycle with 4 frames per row (frame 1 left foot forward, frame 2 passing pose, frame 3 right foot forward, frame 4 passing pose, small arm swing): row 1 facing down toward the camera, row 2 facing RIGHT in clean side profile view, row 3 facing up away from the camera showing the back. Rows 4 to 6 are a fast RUN cycle with 4 frames per row (clearly different from walking: body leaning forward, long stride with legs wide apart and one foot off the ground, arms bent and pumping, clothes and hair streaming behind): row 4 running straight toward the camera in FRONT view (face and chest fully visible, body symmetrical, not turned sideways, legs alternating one forward one back), row 5 running to the RIGHT in clean side profile view, row 6 running up away from the camera showing the back",
+  "transparente": true,
+  "tamanho": 2048,
+  "resolucao": "2K",
+  "proporcao": "3:4"
+ },
+ {
+  "nome": "folha2_pessoa_10",
+  "prompt": "character sprite sheet of a woman with a shaved side and dark straight hair and olive skin wearing a mustard cloak and leather boots, drawn from a high top-down three-quarter camera angle, small chibi body with big head, the exact same character and outfit in every cell. ONE image with a strict grid of exactly 4 columns by 6 rows of equal square cells, no overlaps, same size in every cell, every character's feet on the same baseline of its cell, generous empty spacing between cells. Rows 1 to 3 are a calm WALK cycle with 4 frames per row (frame 1 left foot forward, frame 2 passing pose, frame 3 right foot forward, frame 4 passing pose, small arm swing): row 1 facing down toward the camera, row 2 facing RIGHT in clean side profile view, row 3 facing up away from the camera showing the back. Rows 4 to 6 are a fast RUN cycle with 4 frames per row (clearly different from walking: body leaning forward, long stride with legs wide apart and one foot off the ground, arms bent and pumping, clothes and hair streaming behind): row 4 running straight toward the camera in FRONT view (face and chest fully visible, body symmetrical, not turned sideways, legs alternating one forward one back), row 5 running to the RIGHT in clean side profile view, row 6 running up away from the camera showing the back",
+  "transparente": true,
+  "tamanho": 2048,
+  "resolucao": "2K",
+  "proporcao": "3:4"
+ },
+ {
+  "nome": "folha2_bandido_1",
+  "prompt": "character sprite sheet of a menacing bandit wearing a ragged dark red hood and cloth mask over the face, dagger on belt, patched black clothes, drawn from a high top-down three-quarter camera angle, small chibi body with big head, the exact same character and outfit in every cell. ONE image with a strict grid of exactly 4 columns by 6 rows of equal square cells, no overlaps, same size in every cell, every character's feet on the same baseline of its cell, generous empty spacing between cells. Rows 1 to 3 are a calm WALK cycle with 4 frames per row (frame 1 left foot forward, frame 2 passing pose, frame 3 right foot forward, frame 4 passing pose, small arm swing): row 1 facing down toward the camera, row 2 facing RIGHT in clean side profile view, row 3 facing up away from the camera showing the back. Rows 4 to 6 are a fast RUN cycle with 4 frames per row (clearly different from walking: body leaning forward, long stride with legs wide apart and one foot off the ground, arms bent and pumping, clothes and hair streaming behind): row 4 running straight toward the camera in FRONT view (face and chest fully visible, body symmetrical, not turned sideways, legs alternating one forward one back), row 5 running to the RIGHT in clean side profile view, row 6 running up away from the camera showing the back",
+  "transparente": true,
+  "tamanho": 2048,
+  "resolucao": "2K",
+  "proporcao": "3:4"
+ },
+ {
+  "nome": "folha2_bandido_2",
+  "prompt": "character sprite sheet of a scruffy bandit with an eye patch and a torn black hat and a scar, wearing a brown leather jerkin and holding a club, drawn from a high top-down three-quarter camera angle, small chibi body with big head, the exact same character and outfit in every cell. ONE image with a strict grid of exactly 4 columns by 6 rows of equal square cells, no overlaps, same size in every cell, every character's feet on the same baseline of its cell, generous empty spacing between cells. Rows 1 to 3 are a calm WALK cycle with 4 frames per row (frame 1 left foot forward, frame 2 passing pose, frame 3 right foot forward, frame 4 passing pose, small arm swing): row 1 facing down toward the camera, row 2 facing RIGHT in clean side profile view, row 3 facing up away from the camera showing the back. Rows 4 to 6 are a fast RUN cycle with 4 frames per row (clearly different from walking: body leaning forward, long stride with legs wide apart and one foot off the ground, arms bent and pumping, clothes and hair streaming behind): row 4 running straight toward the camera in FRONT view (face and chest fully visible, body symmetrical, not turned sideways, legs alternating one forward one back), row 5 running to the RIGHT in clean side profile view, row 6 running up away from the camera showing the back",
+  "transparente": true,
+  "tamanho": 2048,
+  "resolucao": "2K",
+  "proporcao": "3:4"
+ }
+]

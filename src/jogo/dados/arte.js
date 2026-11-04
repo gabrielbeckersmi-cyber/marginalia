@@ -1,8 +1,8 @@
 // ARTE — onde está cada folha de sprites e qual tamanho desenhar. Para trocar uma arte: gere de novo (ferramentas/) e mantenha a ordem.
 // folha: { arq, cols, rows, cel } — cel = lado (px) de cada célula já fatiada. Os arquivos ficam em public/assets/.
 export const FOLHAS = {};
-for (let i = 1; i <= 10; i++) FOLHAS["pessoa_" + i] = { arq: `pers_pessoa_${i}.png`, cols: 4, rows: 4, cel: 192 };
-for (let i = 1; i <= 2; i++) FOLHAS["bandido_" + i] = { arq: `pers_bandido_${i}.png`, cols: 4, rows: 4, cel: 192 };
+for (let i = 1; i <= 10; i++) FOLHAS["pessoa_" + i] = { arq: `pers_pessoa_${i}.png`, cols: 4, rows: 8, cel: 192 };
+for (let i = 1; i <= 2; i++) FOLHAS["bandido_" + i] = { arq: `pers_bandido_${i}.png`, cols: 4, rows: 8, cel: 192 };
 for (const e of ["cervo", "coelho", "javali", "lobo", "urso"]) FOLHAS["animal_" + e] = { arq: `animal_${e}.png`, cols: 4, rows: 2, cel: 256 };
 Object.assign(FOLHAS, {
   plantas: { arq: "plantas.png", cols: 4, rows: 4, cel: 192 },
@@ -30,15 +30,15 @@ export const FEAT = {
   3: { n: "Árvore seca", f: ["plantas", 2], tam: 110, bloq: true, grupos: ["madeira"] },
   4: { n: "Macieira", f: ["plantas", 3], tam: 128, bloq: true, grupos: ["comida"] },
   5: { n: "Amoreira", f: ["plantas", 4], tam: 64, grupos: ["comida"] },
-  6: { n: "Arbusto", f: ["plantas", 5], tam: 62, grupos: [] },
+  6: { n: "Arbusto", f: ["plantas", 5], tam: 62, grupos: ["fibra"] },
   7: { n: "Cogumelos", f: ["plantas", 6], tam: 46, grupos: ["comida"] },
   8: { n: "Ervas", f: ["plantas", 7], tam: 58, grupos: ["fibra"] },
   9: { n: "Juncos", f: ["plantas", 8], tam: 66, grupos: ["fibra"] },
   10: { n: "Toco", f: ["plantas", 9], tam: 56, grupos: [] },
   11: { n: "Tronco caído", f: ["plantas", 10], tam: 74, grupos: [] },
   12: { n: "Capim", f: ["plantas", 11], tam: 54, grupos: ["fibra"] },
-  13: { n: "Flores", f: ["plantas", 12], tam: 46, grupos: [] },
-  14: { n: "Samambaia", f: ["plantas", 13], tam: 56, grupos: [] },
+  13: { n: "Flores", f: ["plantas", 12], tam: 46, grupos: ["fibra"] },
+  14: { n: "Samambaia", f: ["plantas", 13], tam: 56, grupos: ["fibra"] },
   15: { n: "Trigo selvagem", f: ["plantas", 14], tam: 58, grupos: ["comida"] },
   16: { n: "Repolho", f: ["plantas", 15], tam: 54, grupos: ["comida"] },
   17: { n: "Pedregulho", f: ["recursos", 0], tam: 88, bloq: true, grupos: ["pedra"] },

@@ -2,8 +2,8 @@
 // Lido por src/nucleo/assets.js e por scripts/gerar-assets-md.js (gera o ASSETS.md). Sem o arquivo, o jogo desenha um marcador simples.
 const A = [];
 const add = (chave, arquivo, descricao, largura, altura, transparente = true) => A.push({ chave, arquivo, descricao, tipo: "imagem", largura, altura, cor: "#8a6a40", transparente });
-for (let i = 1; i <= 10; i++) add("pessoa_" + i, `pers_pessoa_${i}.png`, `Spritesheet de colono ${i}: 4 colunas (passos) × 4 linhas (baixo, esquerda, direita, cima)`, 768, 768);
-for (let i = 1; i <= 2; i++) add("bandido_" + i, `pers_bandido_${i}.png`, `Spritesheet de bandido ${i}: 4×4 como os colonos`, 768, 768);
+for (let i = 1; i <= 10; i++) add("pessoa_" + i, `pers_pessoa_${i}.png`, `Spritesheet de colono ${i}: 4 colunas (passos) × 8 linhas: andar (baixo, esquerda, direita, cima) e correr (mesma ordem)`, 768, 1536);
+for (let i = 1; i <= 2; i++) add("bandido_" + i, `pers_bandido_${i}.png`, `Spritesheet de bandido ${i}: 4×8 como os colonos (andar + correr)`, 768, 1536);
 for (const e of ["cervo", "coelho", "javali", "lobo", "urso"]) add("animal_" + e, `animal_${e}.png`, `Spritesheet de ${e}: 4×2 (linha 0 = andar para a direita)`, 1024, 512);
 add("plantas", "plantas.png", "Plantas e árvores (4×4, ordem em dados/arte.js)", 768, 768);
 add("recursos", "recursos.png", "Pedras, minérios e objetos de cenário (4×4)", 768, 768);

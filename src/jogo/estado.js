@@ -83,13 +83,13 @@ export function serializar(J) {
   return {
     v: VERSAO_PARTIDA, semente: J.semente, t: J.t, dia: J.dia, proxId: J.proxId, proxIdC: J.proxIdC, proxNavio: J.proxNavio, mortes: J.mortes, stats: J.stats,
     jogador: { ...J.jogador, tarefa: null }, npcs: J.npcs.map(limparNPC), construcoes: J.construcoes, cidades: J.cidades, navios: J.navios.filter((s) => !s.inicial),
-    eco: J.eco, chegando: false, corpos: J.corpos, turno: J.turno,
+    eco: J.eco, chegando: false, corpos: J.corpos, turno: J.turno, marcador: J.marcador || null,
     diff: [...J.M.diff], regrow: [...J.M.regrow], animais: Array.from(J.M.animais),
   };
 }
 export function restaurar(S) {
   const M = gerarMundo(S.semente), J = base(M, S.semente);
-  Object.assign(J, { t: S.t, dia: S.dia, proxId: S.proxId, proxIdC: S.proxIdC, proxNavio: S.proxNavio, mortes: S.mortes || 0, stats: S.stats || { dias: 0 }, eco: S.eco, cidades: S.cidades || [], navios: S.navios || [], chegando: false, corpos: S.corpos || [], turno: S.turno || null });
+  Object.assign(J, { t: S.t, dia: S.dia, proxId: S.proxId, proxIdC: S.proxIdC, proxNavio: S.proxNavio, mortes: S.mortes || 0, stats: S.stats || { dias: 0 }, eco: S.eco, cidades: S.cidades || [], navios: S.navios || [], chegando: false, corpos: S.corpos || [], turno: S.turno || null, marcador: S.marcador || null });
   for (const [i, v] of S.diff) { const x = i % M.N; setFeat(M, x, (i - x) / M.N, v); }
   for (const [i, v] of S.regrow) M.regrow.set(i, v);
   M.animais.set(S.animais);

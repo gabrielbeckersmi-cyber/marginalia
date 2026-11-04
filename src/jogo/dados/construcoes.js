@@ -27,7 +27,7 @@ export const CONSTR = {
       { saida: "carne_assada", qtd: 1, ins: { carne_crua: 1 }, base: 12, hab: "culinaria", nivel: 1 },
       { saida: "ensopado", qtd: 1, ins: { carne_crua: 1, cogumelo: 1, repolho: 1 }, base: 30, hab: "culinaria", nivel: 10 },
     ] },
-  mercado: { nome: "Mercado", w: 5, h: 4, req: { construcao: 10 }, mat: { madeira: 40, pedra: 10, fibra: 20 }, tempo: 200, sprite: ["constr_2", 3], tam: 290, negocio: true, mercado: true, hab: "comercio" },
+  mercado: { nome: "Mercado", w: 5, h: 4, req: { construcao: 5 }, mat: { madeira: 40, pedra: 10, fibra: 20 }, tempo: 200, sprite: ["constr_2", 3], tam: 290, negocio: true, mercado: true, hab: "comercio" },
   fazenda: { nome: "Fazenda", w: 6, h: 5, req: { construcao: 6, agricultura: 5 }, mat: { madeira: 18, fibra: 12 }, tempo: 160, sprite: ["constr_3", 1], tam: 330, negocio: true, hab: "agricultura",
     producoes: [{ saida: "trigo", qtd: 3, base: 30, hab: "agricultura" }, { saida: "repolho", qtd: 2, base: 26, hab: "agricultura" }] },
   mina: { nome: "Mina", w: 4, h: 3, req: { construcao: 12, mineracao: 8 }, mat: { madeira: 25, pedra: 15 }, tempo: 220, sprite: ["constr_3", 2], tam: 270, negocio: true, hab: "mineracao",

@@ -79,6 +79,7 @@ export function desenharMundo(ctx, J, cam, L, A, opts = {}) {
   if (opts.alvo && !opts.fantasma) { const a = opts.alvo; ctx.strokeStyle = opts.alvoOk === false ? "#e0503a" : "#f6e08a"; ctx.lineWidth = 2.5; ctx.beginPath();
     if (a.tipo === "constr") ctx.roundRect(a.ref.tx * TS - 3, a.ref.ty * TS - 3, a.ref.w * TS + 6, a.ref.h * TS + 6, 6); else ctx.ellipse(a.x, a.y + (a.tipo === "npc" || a.tipo === "animal" ? 0 : 0), 28, 12, 0, 0, 7); ctx.stroke(); }
   desenharEfeitos(ctx, J);
+  if (J.marcador) desenharSetaDestino(ctx, J, tempo);
   ctx.restore();
 
   // luz do dia (multiplica) + brilho de janelas à noite
@@ -142,4 +143,16 @@ function brilhos(ctx, J, cam, L, A, forca) {
     const g = ctx.createRadialGradient(x, y, 4, x, y, 90); g.addColorStop(0, `rgba(255,190,90,${0.5 * forca})`); g.addColorStop(1, "rgba(255,150,40,0)"); ctx.fillStyle = g; ctx.fillRect(x - 90, y - 90, 180, 180);
   }
   ctx.restore();
+}
+
+/** Seta translúcida ao lado do personagem apontando para o marcador do mapa (some quando já chegou). */
+function desenharSetaDestino(ctx, J, tempo) {
+  const p = J.jogador, dx = (J.marcador.tx + 0.5) * TS - p.x, dy = (J.marcador.ty + 0.5) * TS - p.y, d = Math.hypot(dx, dy);
+  if (d < TS * 2.5 || p.dormindo) return;
+  const a = Math.atan2(dy, dx), r = 78 + Math.sin(tempo * 4) * 4, cx = p.x + Math.cos(a) * r, cy = p.y - 30 + Math.sin(a) * r * 0.7;
+  ctx.save(); ctx.globalAlpha = 0.5; ctx.translate(cx, cy); ctx.rotate(a);
+  ctx.fillStyle = "#f2c54a"; ctx.strokeStyle = "#3a2410"; ctx.lineWidth = 3; ctx.lineJoin = "round";
+  ctx.beginPath(); ctx.moveTo(20, 0); ctx.lineTo(0, -16); ctx.lineTo(0, -6); ctx.lineTo(-18, -6); ctx.lineTo(-18, 6); ctx.lineTo(0, 6); ctx.lineTo(0, 16); ctx.closePath(); ctx.fill(); ctx.stroke();
+  ctx.restore();
+  ctx.save(); ctx.globalAlpha = 0.6; texto(ctx, `${Math.round(d / TS)} m`, cx + Math.cos(a) * 36, cy + Math.sin(a) * 22 + 5, { tam: 13, alinhar: "center", cor: "#f6ecd0", sombra: true }); ctx.restore();
 }

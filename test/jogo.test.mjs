@@ -208,7 +208,7 @@ test("toco: cortar árvore deixa toco; remover rende +1 madeira e a árvore NÃO
 });
 
 test("mercado: pode ser construído sem habilidade de comércio", () => {
-  const p = { hab: HAB.map(() => 1) }; p.hab[IDX.construcao] = 10; assert.ok(hb.atende(p, CONSTR.mercado.req)); p.hab[IDX.construcao] = 9; assert.equal(hb.atende(p, CONSTR.mercado.req), false);
+  const p = { hab: HAB.map(() => 1) }; p.hab[IDX.construcao] = 5; assert.ok(hb.atende(p, CONSTR.mercado.req)); p.hab[IDX.construcao] = 4; assert.equal(hb.atende(p, CONSTR.mercado.req), false);
 });
 
 test("equipamento: arma na mão define o dano; escudo equipado reduz dano; sem o item na mochila deixa de valer", () => {

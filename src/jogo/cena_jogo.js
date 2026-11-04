@@ -12,7 +12,7 @@ import { CONSTR } from "./dados/construcoes.js";
 import { ITENS } from "./dados/itens.js";
 import { criarCamera, seguir, desenharMundo } from "./visual/mundo_desenho.js";
 import { ui, painel, texto, menuVertical, PAL } from "./visual/estilo.js";
-import { mapaGrande } from "./visual/mapa.js";
+import { mapaGrande, atualizarMapa, visaoMapa } from "./visual/mapa.js";
 import { desenharHUD, coletarMensagens } from "./ui/hud.js";
 import { desenharMochila, desenharHabilidades, desenharConstruir, desenharNPC, desenharNegocio, desenharSaque, desenharCriar, desenharCasa, desenharFogueira } from "./ui/paineis.js";
 import { cozinhar } from "./sistemas/ferramentas.js";
@@ -92,6 +92,7 @@ export function criarCenaJogo(G, J, { aoPausar, aoMenu }) {
       if (entrada.apertou("comer")) comerMelhor(J); if (entrada.apertou("cantil")) beberDoCantil(J); if (entrada.apertou("dormir")) alternarSono(J);
       if (entrada.apertou("atacar")) atacar(J);   // só controle (gamepad): acerta o animal/bandido mais perto
       if (entrada.apertou("interagir") && !p.dormindo && !J.chegando && !emTurno) interagirPerto();
+      if (S.painel === "mapa") { S.mapa = visaoMapa(J, S.mapa); atualizarMapa(J, S.mapa, L, S.tempo); }
       // mouse no mundo
       const livreMouse = !ui.sobrePrev && !S.painel;
       S.alvo = livreMouse && !S.construindo && !emTurno ? alvoEm(J, w.x, w.y) : null;
@@ -121,7 +122,7 @@ export function criarCenaJogo(G, J, { aoPausar, aoMenu }) {
       ui.inativo = motor.topo() !== cena;
       desenharMundo(ctx, J, S.cam, L, A, { tempo: S.tempo, alvo: S.alvo, alvoOk: true, fantasma: S.fantasma, forcar: S.tempo < 0.05 });
       desenharHUD(ctx, S, L, A);
-      if (S.painel === "mapa") mapaGrande(ctx, J, L, A); else if (PAINEIS[S.painel]) PAINEIS[S.painel](ctx, S, L, A);
+      if (S.painel === "mapa") mapaGrande(ctx, J, L, A, (S.mapa = visaoMapa(J, S.mapa))); else if (PAINEIS[S.painel]) PAINEIS[S.painel](ctx, S, L, A);
       if (S.morreu) {
         ctx.fillStyle = "#140805bb"; ctx.fillRect(0, 0, L, A);
         painel(ctx, L / 2 - 300, A / 2 - 170, 600, 340, { titulo: "Você caiu" });

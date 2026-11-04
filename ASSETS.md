@@ -9,18 +9,18 @@ Sem o arquivo, o jogo desenha uma versão vetorial neon no lugar — nada quebra
 
 | Arquivo | Para quê | Tamanho | Fundo |
 |---|---|---|---|
-| `pers_pessoa_1.png` | Spritesheet de colono 1: 4 colunas (passos) × 4 linhas (baixo, esquerda, direita, cima) | 768×768px | transparente (PNG) |
-| `pers_pessoa_2.png` | Spritesheet de colono 2: 4 colunas (passos) × 4 linhas (baixo, esquerda, direita, cima) | 768×768px | transparente (PNG) |
-| `pers_pessoa_3.png` | Spritesheet de colono 3: 4 colunas (passos) × 4 linhas (baixo, esquerda, direita, cima) | 768×768px | transparente (PNG) |
-| `pers_pessoa_4.png` | Spritesheet de colono 4: 4 colunas (passos) × 4 linhas (baixo, esquerda, direita, cima) | 768×768px | transparente (PNG) |
-| `pers_pessoa_5.png` | Spritesheet de colono 5: 4 colunas (passos) × 4 linhas (baixo, esquerda, direita, cima) | 768×768px | transparente (PNG) |
-| `pers_pessoa_6.png` | Spritesheet de colono 6: 4 colunas (passos) × 4 linhas (baixo, esquerda, direita, cima) | 768×768px | transparente (PNG) |
-| `pers_pessoa_7.png` | Spritesheet de colono 7: 4 colunas (passos) × 4 linhas (baixo, esquerda, direita, cima) | 768×768px | transparente (PNG) |
-| `pers_pessoa_8.png` | Spritesheet de colono 8: 4 colunas (passos) × 4 linhas (baixo, esquerda, direita, cima) | 768×768px | transparente (PNG) |
-| `pers_pessoa_9.png` | Spritesheet de colono 9: 4 colunas (passos) × 4 linhas (baixo, esquerda, direita, cima) | 768×768px | transparente (PNG) |
-| `pers_pessoa_10.png` | Spritesheet de colono 10: 4 colunas (passos) × 4 linhas (baixo, esquerda, direita, cima) | 768×768px | transparente (PNG) |
-| `pers_bandido_1.png` | Spritesheet de bandido 1: 4×4 como os colonos | 768×768px | transparente (PNG) |
-| `pers_bandido_2.png` | Spritesheet de bandido 2: 4×4 como os colonos | 768×768px | transparente (PNG) |
+| `pers_pessoa_1.png` | Spritesheet de colono 1: 4 colunas (passos) × 8 linhas: andar (baixo, esquerda, direita, cima) e correr (mesma ordem) | 768×1536px | transparente (PNG) |
+| `pers_pessoa_2.png` | Spritesheet de colono 2: 4 colunas (passos) × 8 linhas: andar (baixo, esquerda, direita, cima) e correr (mesma ordem) | 768×1536px | transparente (PNG) |
+| `pers_pessoa_3.png` | Spritesheet de colono 3: 4 colunas (passos) × 8 linhas: andar (baixo, esquerda, direita, cima) e correr (mesma ordem) | 768×1536px | transparente (PNG) |
+| `pers_pessoa_4.png` | Spritesheet de colono 4: 4 colunas (passos) × 8 linhas: andar (baixo, esquerda, direita, cima) e correr (mesma ordem) | 768×1536px | transparente (PNG) |
+| `pers_pessoa_5.png` | Spritesheet de colono 5: 4 colunas (passos) × 8 linhas: andar (baixo, esquerda, direita, cima) e correr (mesma ordem) | 768×1536px | transparente (PNG) |
+| `pers_pessoa_6.png` | Spritesheet de colono 6: 4 colunas (passos) × 8 linhas: andar (baixo, esquerda, direita, cima) e correr (mesma ordem) | 768×1536px | transparente (PNG) |
+| `pers_pessoa_7.png` | Spritesheet de colono 7: 4 colunas (passos) × 8 linhas: andar (baixo, esquerda, direita, cima) e correr (mesma ordem) | 768×1536px | transparente (PNG) |
+| `pers_pessoa_8.png` | Spritesheet de colono 8: 4 colunas (passos) × 8 linhas: andar (baixo, esquerda, direita, cima) e correr (mesma ordem) | 768×1536px | transparente (PNG) |
+| `pers_pessoa_9.png` | Spritesheet de colono 9: 4 colunas (passos) × 8 linhas: andar (baixo, esquerda, direita, cima) e correr (mesma ordem) | 768×1536px | transparente (PNG) |
+| `pers_pessoa_10.png` | Spritesheet de colono 10: 4 colunas (passos) × 8 linhas: andar (baixo, esquerda, direita, cima) e correr (mesma ordem) | 768×1536px | transparente (PNG) |
+| `pers_bandido_1.png` | Spritesheet de bandido 1: 4×8 como os colonos (andar + correr) | 768×1536px | transparente (PNG) |
+| `pers_bandido_2.png` | Spritesheet de bandido 2: 4×8 como os colonos (andar + correr) | 768×1536px | transparente (PNG) |
 | `animal_cervo.png` | Spritesheet de cervo: 4×2 (linha 0 = andar para a direita) | 1024×512px | transparente (PNG) |
 | `animal_coelho.png` | Spritesheet de coelho: 4×2 (linha 0 = andar para a direita) | 1024×512px | transparente (PNG) |
 | `animal_javali.png` | Spritesheet de javali: 4×2 (linha 0 = andar para a direita) | 1024×512px | transparente (PNG) |

@@ -19,12 +19,12 @@ function marcador(ctx, x, y, r, chave) {
   ctx.beginPath(); ctx.arc(x, y, Math.max(4, r), 0, 7); ctx.fill(); ctx.lineWidth = 2; ctx.strokeStyle = "#2a1b10"; ctx.stroke();
 }
 const TAM_PESSOA = 84;
-/** Pessoa andando: linhas da folha = baixo, esquerda, direita, cima; colunas = passos. */
+/** Pessoa: folha 4×8. Linhas 0–3 = andar (baixo, esquerda, direita, cima); linhas 4–7 = correr (mesma ordem); colunas = passos. */
 export function desenharPessoa(ctx, e, x, y, { dormindo = false } = {}) {
-  const f = e.mov || e.trab ? Math.floor(e.anim || 0) % 4 : 0, linha = e.dir === undefined ? 0 : e.dir;
+  const f = e.mov || e.trab ? Math.floor(e.anim || 0) % 4 : 0, correr = e.mov && e.correndo, linha = (e.dir === undefined ? 0 : e.dir) + (correr ? 4 : 0);
   sombra(ctx, x, y, 17);
   if (dormindo) { ctx.save(); ctx.translate(x, y - 6); ctx.rotate(-Math.PI / 2 * 0.95); desenharQuadro(ctx, e.sprite, 0, 0, 30, TAM_PESSOA * 0.9); ctx.restore(); return; }
-  const balanco = e.mov ? Math.abs(Math.sin((e.anim || 0) * 0.8)) * 2 : 0;
+  const balanco = e.mov ? Math.abs(Math.sin((e.anim || 0) * 0.8)) * (correr ? 1 : 2) : 0;
   desenharQuadro(ctx, e.sprite, linha * 4 + f, x, y - balanco + 3, TAM_PESSOA);
 }
 export function sombra(ctx, x, y, rx, ry = rx * 0.38) { ctx.fillStyle = "#00000030"; ctx.beginPath(); ctx.ellipse(x, y - 1, rx, ry, 0, 0, 7); ctx.fill(); }
