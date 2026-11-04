@@ -94,3 +94,8 @@ Tabela única em `src/jogo/dados/animacoes.cjs` (instruções no topo). Para ati
 salve `public/assets/pers_pessoa_1_cortar.png` (4 direções: baixo, esquerda, direita, cima; cada direção em `ceil(quadros/cols)` linhas) e
 coloque `"pessoa_1"` (ou `"*"`) em `sprites` da animação. Sem arte, o jogo usa o andar. A escolha do quadro fica em `src/jogo/visual/animacao.js`
 (2D e 2.5D usam a mesma). Velocidade do jogador: `C.VEL_FATOR` (protótipo 2.5D = 1.3; 2D = 1).
+
+## Construções 3D (protótipo)
+Pacote modular Medieval Village (Quaternius, CC0) em `public/assets/modelos/vila/` + texturas geradas (`tex_*.jpg`, lista em `arte/listas/texturas_vila.json`).
+`src/proto3d/construcoes3d.js`: 1 módulo = 2 tiles; `PLANTAS` define cada tipo (módulos, estilo de parede, telhado). Interior é pisável (`M.livre`), telhado some por dentro.
+`src/proto3d/oclusao.js`: árvores/paredes/telhados ficam translúcidos perto do personagem quando o tampam. `?casas=sprite` volta às construções 2D.

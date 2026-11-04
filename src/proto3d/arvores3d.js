@@ -3,6 +3,7 @@
 // Contorno de tinta: casco invertido (cópia do modelo, de dentro para fora, em cor escura). Instâncias: um InstancedMesh por modelo.
 import * as THREE from "three";
 import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader.js";
+import { comOclusao } from "./oclusao.js";
 
 export const MODELOS = { 1: ["CommonTree_1", "CommonTree_2", "CommonTree_3"], 2: ["PineTree_1", "PineTree_2", "PineTree_3"], 3: ["CommonTree_Dead_1", "CommonTree_Dead_2"], 4: ["CommonTree_Autumn_1", "CommonTree_Autumn_2"], 24: ["Willow_1", "Willow_2"] };
 const ESCALA = 0.03, MAX = 1800;              // modelo ≈ 250 unidades de altura → ≈ 5 unidades do jogo (1 unidade = 1 tile)
@@ -33,10 +34,11 @@ export async function criarArvores3D(cena, luz) {
       };
       m.customProgramCacheKey = () => "tri" + texNome;
     }
-    matCache.set(chave, m); return m;
+    comOclusao(m, "arv"); matCache.set(chave, m); return m;
   }
   const tinta = new THREE.MeshBasicMaterial({ color: "#241608", side: THREE.BackSide });
   tinta.onBeforeCompile = (sh) => { sh.vertexShader = sh.vertexShader.replace("#include <begin_vertex>", "#include <begin_vertex>\ntransformed += normalize(normal) * 1.6;"); };
+  comOclusao(tinta, "tinta");
   const modelos = {};
   async function carregar(nome) {
     const o = await loader.loadAsync(`assets/modelos/${nome}.fbx`); let malha = null; o.traverse((m) => { if (m.isMesh && !malha) malha = m; }); if (!malha) return null;

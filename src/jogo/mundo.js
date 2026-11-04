@@ -125,7 +125,7 @@ export const aguaDoce = (M, tx, ty) => { const t = terreno(M, tx, ty); return t 
 export function caminhavel(M, tx, ty) {
   if (!noMapa(M, tx, ty)) return false;
   const i = ty * M.N + tx, t = M.terr[i];
-  return t !== T.MAR && t !== T.LAGO && !BLOQ[M.feat[i]] && M.occ[i] === 0;
+  return t !== T.MAR && t !== T.LAGO && !BLOQ[M.feat[i]] && (M.occ[i] === 0 || (M.livre !== undefined && M.livre.has(i)));   // livre: interior/porta de construções entráveis (só o protótipo 3D usa)
 }
 export const featEm = (M, tx, ty) => (noMapa(M, tx, ty) ? M.feat[ty * M.N + tx] : 0);
 

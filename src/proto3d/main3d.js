@@ -3,6 +3,7 @@
 // Controles: WASD/setas = andar · Shift = correr · botão direito + arrastar (ou Q/E) = girar a câmera · roda = zoom · botão esquerdo = coletar/atacar · F = comer · R = beber.
 import * as THREE from "three";
 import { C } from "../jogo/config.js";
+import { iniciarObra } from "../jogo/sistemas/construcao.js";
 import { novoJogo, atualizarJogo } from "../jogo/estado.js";
 import { atualizarJogador, alvoEm, descreverAlvo, atacar, alcanceAtaque, comerMelhor, beberDoCantil } from "../jogo/interacao.js";
 import { carregarArte, arte } from "../nucleo/assets.js";
@@ -13,7 +14,10 @@ import { T, featEm, setFeat } from "../jogo/mundo.js";
 import { hash2, fbm } from "../jogo/rng.js";
 import { quadroPessoa } from "../jogo/visual/animacao.js";
 import { criarArvores3D } from "./arvores3d.js";
+import { criarConstrucoes3D, temModelo, tamanhoTiles, tilesLivres, PLANTAS } from "./construcoes3d.js";
+import { uJog } from "./oclusao.js";
 
+for (const t of Object.keys(PLANTAS)) { const [w, h] = tamanhoTiles(t); CONSTR[t].w = w; CONSTR[t].h = h; }   // casas do pacote 3D são maiores (módulos de 2 tiles)
 C.VEL_FATOR = 1.3;                              // protótipo: movimento 30% mais rápido (o jogo 2D segue em 1)
 const TS = C.TILE, CHK = 32, RAIO_CHUNKS = 4, NIVEL_AGUA = -0.2;
 // ── ajustes de câmera e escala (estimados a partir dos prints do Gabriel) ──
@@ -155,6 +159,8 @@ async function iniciar() {
 
   // árvores em 3D (modelos do Quaternius + textura IA). ?arvores=sprite volta para os sprites 2D
   const arv3d = new URLSearchParams(location.search).get("arvores") === "sprite" ? null : await criarArvores3D(cena).catch((e) => { console.warn("árvores 3D indisponíveis", e); return null; });
+  const cons3d = new URLSearchParams(location.search).get("casas") === "sprite" ? null : await criarConstrucoes3D(cena).catch((e) => { console.warn("construções 3D indisponíveis", e); return null; });
+  const obras3d = new Map(); M.livre = new Set();
   // grupos de sprites
   const grupos = new Map(), grupoDe = (chave, max = 3000) => { let g = grupos.get(chave); if (!g) { g = new Grupo(chave, max, cena); grupos.set(chave, g); } return g; };
   for (const c of ["plantas", "recursos", "extras"]) grupoDe(c, 14000);
@@ -218,7 +224,7 @@ async function iniciar() {
   let tFeat = 0, tUI = 0;
   function reconstruir() {
     nS = 0; for (const g of grupos.values()) g.limpar(); if (arv3d && arv3d.ok) arv3d.limpar();
-    const px = sx(p.x), pz = sx(p.y), tem = (c) => grupoDe(c);
+    const px = sx(p.x), pz = sx(p.y), tem = (c) => grupoDe(c); px_ = px; pz_ = pz;
     // elementos do mapa
     const R = 46, x0 = Math.max(0, Math.floor(px - R)), x1 = Math.min(M.N - 1, Math.ceil(px + R)), y0 = Math.max(0, Math.floor(pz - R)), y1 = Math.min(M.N - 1, Math.ceil(pz + R));
     for (let ty = y0; ty <= y1; ty++) for (let tx = x0; tx <= x1; tx++) {
@@ -230,6 +236,7 @@ async function iniciar() {
     // construções
     for (const b of J.construcoes) {
       const d = CONSTR[b.tipo], cx = b.tx + b.w / 2, cz = b.ty + b.h - 0.1; if (Math.abs(cx - px) > R + 10 || Math.abs(cz - pz) > R + 10) continue;
+      if (cons3d && temModelo(b.tipo) && b.prog >= 1) { casa3d(b); continue; }
       const w = sx(d.tam), y = mundo.alturaEm(cx, cz); tem(d.sprite[0]).add(cx, y - 0.05, cz, w, w, d.sprite[1], b.prog >= 1 ? 1 : 0.55 + 0.2 * b.prog); sombra(cx, y, cz, w * 0.34);
     }
     // animais
@@ -251,6 +258,15 @@ async function iniciar() {
     for (const s of J.navios) { const x = sx(s.x), z = sx(s.y + 120), w = 9.2; tem("navio").add(x, NIVEL_AGUA - 0.35, z, w, w, 0); }
     for (const g of grupos.values()) g.fim(); if (arv3d && arv3d.ok) arv3d.fim(); sombras.count = nS; sombras.instanceMatrix.needsUpdate = true;
   }
+  // construções 3D: monta uma vez (assíncrono), libera o interior para andar e some com o telhado quando o jogador está dentro
+  function casa3d(b) {
+    let o = obras3d.get(b.id);
+    if (!o) { o = { pronta: false }; obras3d.set(b.id, o); const y = mundo.alturaEm(b.tx + b.w / 2, b.ty + b.h / 2); cons3d.montar(b.tipo, b.tx, b.ty, y).then((r) => { Object.assign(o, r, { pronta: true }); }).catch((e) => console.warn("casa falhou", e));
+      for (const [lx, ly] of tilesLivres(b.tipo)) M.livre.add((b.ty + ly) * M.N + b.tx + lx); }
+    if (o.pronta) { const dentro = px_ > b.tx + 0.3 && px_ < b.tx + b.w - 0.3 && pz_ > b.ty + 0.3 && pz_ < b.ty + b.h - 0.3; o.dentro = dentro; o.telhado.visible = !dentro; }
+    else { const w = sx(CONSTR[b.tipo].tam), y = mundo.alturaEm(b.tx + b.w / 2, b.ty + b.h); grupoDe(CONSTR[b.tipo].sprite[0]).add(b.tx + b.w / 2, y, b.ty + b.h - 0.1, w, w, CONSTR[b.tipo].sprite[1], 0.6); }
+  }
+  let px_ = 0, pz_ = 0;
   const rotulos = [], rotEl = document.getElementById("rotulos"), nomesEl = new Map();
 
   let ultimo = performance.now();
@@ -265,6 +281,8 @@ async function iniciar() {
     cam.position.set(orb.alvo.x + Math.sin(orb.yaw) * cp * orb.dist, orb.alvo.y + Math.sin(orb.pitch) * orb.dist, orb.alvo.z + Math.cos(orb.yaw) * cp * orb.dist);
     const ch = mundo.alturaEm(cam.position.x, cam.position.z) + 0.6; if (cam.position.y < ch) cam.position.y = ch;
     cam.lookAt(orb.alvo); cam.updateMatrixWorld();
+    { const w = renderer.domElement.width, h = renderer.domElement.height, c = new THREE.Vector3(px, py - 0.45, pz); const d = c.distanceTo(cam.position); c.project(cam);
+      uJog.value.set((c.x * 0.5 + 0.5) * w, (c.y * 0.5 + 0.5) * h, d, h * 0.13); }
     uRight.value.set(Math.cos(orb.yaw), 0, -Math.sin(orb.yaw));
     // luz e céu conforme a hora
     const l = luzDoDia(J.hora); uTint.value.setRGB(l[0] / 255, l[1] / 255, l[2] / 255, THREE.SRGBColorSpace);
@@ -293,7 +311,7 @@ async function iniciar() {
     for (const [nome, el] of nomesEl) if (!usados.has(nome)) el.style.display = "none";
     requestAnimationFrame(quadro);
   }
-  window.__proto = { arv3d, J, S, orb, cam, mundo, renderer, passo, quadro: () => 0 };
+  window.__proto = { obra: (tipo, dx, dy) => { const b = iniciarObra(J, p, tipo, Math.floor(sx(p.x)) + dx, Math.floor(sx(p.y)) + dy); b.prog = 1; return b; }, cons3d, obras3d, uJog, arv3d, J, S, orb, cam, mundo, renderer, passo, quadro: () => 0 };
   document.getElementById("carregando").remove();
   requestAnimationFrame(quadro);
 }

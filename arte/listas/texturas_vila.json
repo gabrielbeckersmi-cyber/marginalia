@@ -1,0 +1,74 @@
+[
+ {
+  "nome": "tex_reboco",
+  "prompt": "seamless tileable flat texture swatch, orthographic straight-on view with no perspective, uniform detail across the whole square, fills the entire frame edge to edge, no border, no frame, no single large object, no text. medieval lime plaster wall texture: warm cream and pale ochre rough plaster with subtle trowel marks, tiny cracks and stains drawn with scratchy sepia ink hatching and soft gouache washes",
+  "transparente": false,
+  "tamanho": 1024,
+  "proporcao": "1:1",
+  "motor": "grok"
+ },
+ {
+  "nome": "tex_tijolo_irregular",
+  "prompt": "seamless tileable flat texture swatch, orthographic straight-on view with no perspective, uniform detail across the whole square, fills the entire frame edge to edge, no border, no frame, no single large object, no text. medieval uneven stone-and-brick wall texture: irregular hand-laid bricks and small stones in warm terracotta, ochre and grey-brown with thick dark mortar lines, scratchy ink outlines and gouache washes",
+  "transparente": false,
+  "tamanho": 1024,
+  "proporcao": "1:1",
+  "motor": "grok"
+ },
+ {
+  "nome": "tex_tijolo",
+  "prompt": "seamless tileable flat texture swatch, orthographic straight-on view with no perspective, uniform detail across the whole square, fills the entire frame edge to edge, no border, no frame, no single large object, no text. medieval red brick wall texture: regular running-bond bricks in muted madder red and brown with cream mortar lines, scratchy ink outlines, gouache washes",
+  "transparente": false,
+  "tamanho": 1024,
+  "proporcao": "1:1",
+  "motor": "grok"
+ },
+ {
+  "nome": "tex_telha",
+  "prompt": "seamless tileable flat texture swatch, orthographic straight-on view with no perspective, uniform detail across the whole square, fills the entire frame edge to edge, no border, no frame, no single large object, no text. clay round roof tiles texture: overlapping rows of curved terracotta roof tiles in burnt orange, rust and brown, dark ink outlines and gouache washes",
+  "transparente": false,
+  "tamanho": 1024,
+  "proporcao": "1:1",
+  "motor": "grok"
+ },
+ {
+  "nome": "tex_pedra",
+  "prompt": "seamless tileable flat texture swatch, orthographic straight-on view with no perspective, uniform detail across the whole square, fills the entire frame edge to edge, no border, no frame, no single large object, no text. cut grey stone blocks texture: rough ashlar stone masonry in cool grey, beige and slate with dark ink cracks and moss flecks, gouache washes",
+  "transparente": false,
+  "tamanho": 1024,
+  "proporcao": "1:1",
+  "motor": "grok"
+ },
+ {
+  "nome": "tex_tabuas",
+  "prompt": "seamless tileable flat texture swatch, orthographic straight-on view with no perspective, uniform detail across the whole square, fills the entire frame edge to edge, no border, no frame, no single large object, no text. wooden planks texture: vertical weathered oak planks in warm medium brown with dark grain lines and nail dots, scratchy ink hatching and gouache washes",
+  "transparente": false,
+  "tamanho": 1024,
+  "proporcao": "1:1",
+  "motor": "grok"
+ },
+ {
+  "nome": "tex_tabuas_gasta",
+  "prompt": "seamless tileable flat texture swatch, orthographic straight-on view with no perspective, uniform detail across the whole square, fills the entire frame edge to edge, no border, no frame, no single large object, no text. old worn dark wood planks texture: heavily weathered dark brown and grey timber with deep cracks and scratches, scratchy ink hatching and gouache washes",
+  "transparente": false,
+  "tamanho": 1024,
+  "proporcao": "1:1",
+  "motor": "grok"
+ },
+ {
+  "nome": "tex_metal",
+  "prompt": "seamless tileable flat texture swatch, orthographic straight-on view with no perspective, uniform detail across the whole square, fills the entire frame edge to edge, no border, no frame, no single large object, no text. wrought iron texture: dark blackened forged metal with subtle rust orange flecks and hammered marks, scratchy ink and gouache washes",
+  "transparente": false,
+  "tamanho": 1024,
+  "proporcao": "1:1",
+  "motor": "grok"
+ },
+ {
+  "nome": "tex_hera",
+  "prompt": "seamless tileable flat texture swatch, orthographic straight-on view with no perspective, uniform detail across the whole square, fills the entire frame edge to edge, no border, no frame, no single large object, no text. ivy foliage texture: dense small dark green and olive ivy leaves with thin vines, dark ink outlines, hand-inked gouache",
+  "transparente": false,
+  "tamanho": 1024,
+  "proporcao": "1:1",
+  "motor": "grok"
+ }
+]
