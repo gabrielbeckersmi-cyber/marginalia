@@ -12,11 +12,11 @@ await mkdir("www", { recursive: true });
 await cp("public", "www", { recursive: true });
 
 const opcoes = {
-  entryPoints: ["src/main.js"],
+  entryPoints: { app: "src/main.js", proto3d: "src/proto3d/main3d.js" },   // app = jogo 2D · proto3d = protótipo 2.5D (proto3d.html)
   bundle: true,
   format: "iife",
   target: ["chrome120"],           // Chromium embutido no Electron: moderno
-  outfile: "www/app.js",
+  outdir: "www",
   minify: !servir,
   sourcemap: servir,
   logLevel: "info",

@@ -82,3 +82,9 @@ test/                  ← testes automáticos
 **Quero mudar para Godot/Unity.** Possível, mas é outro projeto: peça ao Claude para comparar (a skill tem um guia de escolha de tecnologia). O passo a passo da Steam (conta, loja, depots, upload) é o mesmo.
 
 **macOS?** Não está incluso: exige um Mac para assinar e "notarizar". Peça ao Claude o guia de macOS da skill quando for a hora.
+
+## Protótipo 2.5D (câmera orbital em 3ª pessoa)
+`public/proto3d.html` + `src/proto3d/main3d.js` (Three.js). Usa a mesma lógica do jogo (`src/jogo/`), só desenha em 3D: terreno em blocos com relevo,
+árvores/casas/pessoas/animais como sprites em pé (billboards). Abra `proto3d.html` ao lado do jogo (no GitHub Pages: `.../proto3d.html`).
+Controles: WASD andar · Shift correr · botão direito+arrastar ou Q/E girar a câmera · roda zoom · botão esquerdo segurar = coletar/atacar · F comer · R beber.
+Ainda sem painéis (mochila, construir, conversa) — é só para avaliar o visual e a jogabilidade.

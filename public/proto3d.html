@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Marginália — protótipo 2.5D</title>
+  <style>
+    html, body { margin: 0; height: 100%; overflow: hidden; background: #1b2a2e; font-family: Georgia, "Times New Roman", serif; color: #f6ecd0; }
+    canvas { position: fixed; inset: 0; width: 100%; height: 100%; display: block; outline: none; }
+    .painel { position: fixed; background: #d6bd86e6; border: 3px solid #2a1b10; border-radius: 8px; color: #2a1b10; padding: 8px 12px; pointer-events: none; box-shadow: 0 2px 8px #0006; }
+    #status { left: 12px; top: 12px; width: 230px; }
+    .barra { display: flex; align-items: center; gap: 6px; margin: 3px 0; font-size: 13px; }
+    .barra b { width: 52px; font-weight: normal; }
+    .barra i { flex: 1; height: 9px; background: #2a1b1055; border-radius: 5px; overflow: hidden; display: block; }
+    .barra em { display: block; height: 100%; width: 50%; }
+    #hora { font-size: 14px; margin-top: 6px; display: flex; justify-content: space-between; }
+    #ajuda { right: 12px; top: 12px; font-size: 12.5px; line-height: 1.5; max-width: 250px; }
+    #dica { position: fixed; left: 50%; bottom: 26px; transform: translateX(-50%); font-size: 17px; text-shadow: 0 2px 4px #000c; pointer-events: none; }
+    #dica.ruim { color: #ffb09a; }
+    #msgs { position: fixed; left: 12px; bottom: 12px; font-size: 14px; text-shadow: 0 1px 3px #000; pointer-events: none; }
+    #rotulos span { position: fixed; left: 0; top: 0; font-size: 13px; text-shadow: 0 1px 3px #000, 0 0 4px #000; white-space: nowrap; pointer-events: none; display: none; }
+    #carregando { position: fixed; inset: 0; display: grid; place-items: center; font-size: 22px; background: #1b2a2e; }
+  </style>
+</head>
+<body>
+  <canvas id="tela3d" tabindex="0"></canvas>
+  <div id="rotulos"></div>
+  <div id="status" class="painel">
+    <div class="barra"><b>Vida</b><i><em id="b-vida" style="background:#c0392b"></em></i></div>
+    <div class="barra"><b>Fome</b><i><em id="b-fome" style="background:#c98a2b"></em></i></div>
+    <div class="barra"><b>Sede</b><i><em id="b-sede" style="background:#2f7fb0"></em></i></div>
+    <div class="barra"><b>Cansaço</b><i><em id="b-cans" style="background:#7a5aa8"></em></i></div>
+    <div class="barra"><b>Fôlego</b><i><em id="b-stam" style="background:#d4a82b"></em></i></div>
+    <div id="hora"><span id="hora-t"></span><span id="ouro"></span></div>
+  </div>
+  <div id="ajuda" class="painel"><b>Protótipo 2.5D</b><br>WASD / setas: andar · Shift: correr<br>Botão direito + arrastar (ou Q / E): girar a câmera<br>Roda: zoom<br>Botão esquerdo (segurar): coletar / atacar<br>F: comer · R: beber</div>
+  <div id="dica"></div>
+  <div id="msgs"></div>
+  <div id="carregando">Carregando a ilha…</div>
+  <script src="proto3d.js"></script>
+</body>
+</html>
