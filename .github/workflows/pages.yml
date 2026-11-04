@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: 22
           cache: npm
-      - run: npm ci --omit=optional --ignore-scripts
+      - run: npm ci --ignore-scripts
       - run: node build.mjs
       - run: touch www/.nojekyll
       - uses: actions/configure-pages@v5
